@@ -11,6 +11,7 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Southern Europe",
   "aliases": [
+   "AD",
    "Principality of Andorra",
    "Principat d'Andorra"
   ]
@@ -21,8 +22,11 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "Western Asia",
   "aliases": [
+   "AE",
    "UAE",
-   "Emirates"
+   "Emirates",
+   "الإمارات",
+   "الإمارات العربية المتحدة"
   ]
  },
  {
@@ -31,8 +35,14 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "Southern Asia",
   "aliases": [
+   "AF",
    "Islamic Republic of Afghanistan",
-   "Afġānistān"
+   "Afġānistān",
+   "افغانستان",
+   "جمهوری اسلامی افغانستان",
+   "د افغانستان اسلامي جمهوریت",
+   "Owganystan",
+   "Owganystan Yslam Respublikasy"
   ]
  },
  {
@@ -40,7 +50,9 @@ export const COUNTRIES = [
   "name": "Antigua and Barbuda",
   "region": "Americas",
   "subregion": "Caribbean",
-  "aliases": []
+  "aliases": [
+   "AG"
+  ]
  },
  {
   "code": "AL",
@@ -48,10 +60,12 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Southeast Europe",
   "aliases": [
+   "AL",
    "Republic of Albania",
    "Shqipëri",
    "Shqipëria",
-   "Shqipnia"
+   "Shqipnia",
+   "Republika e Shqipërisë"
   ]
  },
  {
@@ -60,9 +74,11 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "Western Asia",
   "aliases": [
+   "AM",
    "Republic of Armenia",
    "Hayastan",
-   "Հայաստանի Հանրապետություն"
+   "Հայաստանի Հանրապետություն",
+   "Հայաստան"
   ]
  },
  {
@@ -71,6 +87,7 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Middle Africa",
   "aliases": [
+   "AO",
    "Republic of Angola",
    "República de Angola",
    "ʁɛpublika de an'ɡɔla"
@@ -82,6 +99,7 @@ export const COUNTRIES = [
   "region": "Americas",
   "subregion": "South America",
   "aliases": [
+   "AR",
    "Argentine Republic",
    "República Argentina"
   ]
@@ -92,9 +110,12 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Central Europe",
   "aliases": [
+   "AT",
    "Republic of Austria",
    "Osterreich",
-   "Oesterreich"
+   "Oesterreich",
+   "Österreich",
+   "Republik Österreich"
   ]
  },
  {
@@ -103,6 +124,7 @@ export const COUNTRIES = [
   "region": "Oceania",
   "subregion": "Australia and New Zealand",
   "aliases": [
+   "AU",
    "Commonwealth of Australia"
   ]
  },
@@ -112,8 +134,12 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "Western Asia",
   "aliases": [
+   "AZ",
    "Republic of Azerbaijan",
-   "Azərbaycan Respublikası"
+   "Azərbaycan Respublikası",
+   "Azərbaycan",
+   "Азербайджан",
+   "Азербайджанская Республика"
   ]
  },
  {
@@ -122,8 +148,13 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Southeast Europe",
   "aliases": [
+   "BA",
    "Bosnia-Herzegovina",
-   "Босна и Херцеговина"
+   "Босна и Херцеговина",
+   "Bosna i Hercegovina",
+   "Боснa и Херцеговина",
+   "BiH",
+   "Bosnia"
   ]
  },
  {
@@ -131,7 +162,9 @@ export const COUNTRIES = [
   "name": "Barbados",
   "region": "Americas",
   "subregion": "Caribbean",
-  "aliases": []
+  "aliases": [
+   "BB"
+  ]
  },
  {
   "code": "BD",
@@ -139,8 +172,11 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "Southern Asia",
   "aliases": [
+   "BD",
    "People's Republic of Bangladesh",
-   "Gônôprôjatôntri Bangladesh"
+   "Gônôprôjatôntri Bangladesh",
+   "বাংলাদেশ",
+   "বাংলাদেশ গণপ্রজাতন্ত্রী"
   ]
  },
  {
@@ -149,6 +185,7 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Western Europe",
   "aliases": [
+   "BE",
    "Kingdom of Belgium",
    "België",
    "Belgie",
@@ -164,7 +201,10 @@ export const COUNTRIES = [
   "name": "Burkina Faso",
   "region": "Africa",
   "subregion": "Western Africa",
-  "aliases": []
+  "aliases": [
+   "BF",
+   "République du Burkina"
+  ]
  },
  {
   "code": "BG",
@@ -172,8 +212,10 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Southeast Europe",
   "aliases": [
+   "BG",
    "Republic of Bulgaria",
-   "Република България"
+   "Република България",
+   "България"
   ]
  },
  {
@@ -182,8 +224,11 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "Western Asia",
   "aliases": [
+   "BH",
    "Kingdom of Bahrain",
-   "Mamlakat al-Baḥrayn"
+   "Mamlakat al-Baḥrayn",
+   "البحرين",
+   "مملكة البحرين"
   ]
  },
  {
@@ -192,9 +237,12 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Eastern Africa",
   "aliases": [
+   "BI",
    "Republic of Burundi",
    "Republika y'Uburundi",
-   "République du Burundi"
+   "République du Burundi",
+   "Uburundi",
+   "Republika y'Uburundi "
   ]
  },
  {
@@ -203,8 +251,10 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Western Africa",
   "aliases": [
+   "BJ",
    "Republic of Benin",
-   "République du Bénin"
+   "République du Bénin",
+   "Bénin"
   ]
  },
  {
@@ -213,10 +263,13 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "South-Eastern Asia",
   "aliases": [
+   "BN",
    "Nation of Brunei, Abode of Peace",
    "Brunei Darussalam",
    "Nation of Brunei",
-   "the Abode of Peace"
+   "the Abode of Peace",
+   "Negara Brunei Darussalam",
+   "Nation of Brunei, Abode Damai"
   ]
  },
  {
@@ -225,6 +278,7 @@ export const COUNTRIES = [
   "region": "Americas",
   "subregion": "South America",
   "aliases": [
+   "BO",
    "Plurinational State of Bolivia",
    "Buliwya",
    "Wuliwya",
@@ -232,7 +286,8 @@ export const COUNTRIES = [
    "Estado Plurinacional de Bolivia",
    "Buliwya Mamallaqta",
    "Wuliwya Suyu",
-   "Tetã Volívia"
+   "Tetã Volívia",
+   "Volívia"
   ]
  },
  {
@@ -241,6 +296,7 @@ export const COUNTRIES = [
   "region": "Americas",
   "subregion": "South America",
   "aliases": [
+   "BR",
    "Federative Republic of Brazil",
    "Brasil",
    "República Federativa do Brasil"
@@ -252,6 +308,7 @@ export const COUNTRIES = [
   "region": "Americas",
   "subregion": "Caribbean",
   "aliases": [
+   "BS",
    "Commonwealth of the Bahamas"
   ]
  },
@@ -261,7 +318,10 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "Southern Asia",
   "aliases": [
-   "Kingdom of Bhutan"
+   "BT",
+   "Kingdom of Bhutan",
+   "འབྲུག་ཡུལ་",
+   "འབྲུག་རྒྱལ་ཁབ་"
   ]
  },
  {
@@ -270,6 +330,7 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Southern Africa",
   "aliases": [
+   "BW",
    "Republic of Botswana",
    "Lefatshe la Botswana"
   ]
@@ -280,10 +341,15 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Eastern Europe",
   "aliases": [
+   "BY",
    "Republic of Belarus",
    "Bielaruś",
    "Белоруссия",
-   "Республика Белоруссия"
+   "Республика Белоруссия",
+   "Белару́сь",
+   "Рэспубліка Беларусь",
+   "Беларусь",
+   "Республика Беларусь"
   ]
  },
  {
@@ -291,14 +357,19 @@ export const COUNTRIES = [
   "name": "Belize",
   "region": "Americas",
   "subregion": "Central America",
-  "aliases": []
+  "aliases": [
+   "BZ",
+   "Belice"
+  ]
  },
  {
   "code": "CA",
   "name": "Canada",
   "region": "Americas",
   "subregion": "North America",
-  "aliases": []
+  "aliases": [
+   "CA"
+  ]
  },
  {
   "code": "CD",
@@ -306,11 +377,19 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Middle Africa",
   "aliases": [
+   "CD",
    "Democratic Republic of the Congo",
    "Congo-Kinshasa",
    "Congo, the Democratic Republic of the",
    "Democratic Republic of Congo",
-   "DRC"
+   "DRC",
+   "RD Congo",
+   "République démocratique du Congo",
+   "Repubilika ya Kongo Demokratiki",
+   "Republiki ya Kongó Demokratiki",
+   "Ditunga dia Kongu wa Mungalaata",
+   "Jamhuri ya Kidemokrasia ya Kongo",
+   "Zaire"
   ]
  },
  {
@@ -319,7 +398,11 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Middle Africa",
   "aliases": [
-   "République centrafricaine"
+   "CF",
+   "République centrafricaine",
+   "Bêafrîka",
+   "Ködörösêse tî Bêafrîka",
+   "CAR"
   ]
  },
  {
@@ -328,8 +411,12 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Middle Africa",
   "aliases": [
+   "CG",
    "Republic of the Congo",
-   "Congo-Brazzaville"
+   "Congo-Brazzaville",
+   "République du Congo",
+   "Repubilika ya Kongo",
+   "Republíki ya Kongó"
   ]
  },
  {
@@ -338,11 +425,16 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Western Europe",
   "aliases": [
+   "CH",
    "Swiss Confederation",
    "Schweiz",
    "Suisse",
    "Svizzera",
-   "Svizra"
+   "Svizra",
+   "Confédération suisse",
+   "Schweizerische Eidgenossenschaft",
+   "Confederazione Svizzera",
+   "Confederaziun svizra"
   ]
  },
  {
@@ -351,6 +443,7 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Western Africa",
   "aliases": [
+   "CI",
    "Republic of Côte d'Ivoire",
    "Côte d'Ivoire",
    "Cote d'Ivoire",
@@ -363,6 +456,7 @@ export const COUNTRIES = [
   "region": "Americas",
   "subregion": "South America",
   "aliases": [
+   "CL",
    "Republic of Chile",
    "República de Chile"
   ]
@@ -373,8 +467,10 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Middle Africa",
   "aliases": [
+   "CM",
    "Republic of Cameroon",
-   "République du Cameroun"
+   "République du Cameroun",
+   "Cameroun"
   ]
  },
  {
@@ -383,12 +479,15 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "Eastern Asia",
   "aliases": [
+   "CN",
    "People's Republic of China",
    "Zhōngguó",
    "Zhongguo",
    "Zhonghua",
    "中华人民共和国",
-   "Zhōnghuá Rénmín Gònghéguó"
+   "Zhōnghuá Rénmín Gònghéguó",
+   "中国",
+   "PRC"
   ]
  },
  {
@@ -397,6 +496,7 @@ export const COUNTRIES = [
   "region": "Americas",
   "subregion": "South America",
   "aliases": [
+   "CO",
    "Republic of Colombia",
    "República de Colombia"
   ]
@@ -407,6 +507,7 @@ export const COUNTRIES = [
   "region": "Americas",
   "subregion": "Central America",
   "aliases": [
+   "CR",
    "Republic of Costa Rica",
    "República de Costa Rica"
   ]
@@ -417,6 +518,7 @@ export const COUNTRIES = [
   "region": "Americas",
   "subregion": "Caribbean",
   "aliases": [
+   "CU",
    "Republic of Cuba",
    "República de Cuba"
   ]
@@ -427,8 +529,10 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Western Africa",
   "aliases": [
+   "CV",
    "Republic of Cabo Verde",
-   "República de Cabo Verde"
+   "República de Cabo Verde",
+   "Cabo Verde"
   ]
  },
  {
@@ -437,11 +541,14 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Southern Europe",
   "aliases": [
+   "CY",
    "Republic of Cyprus",
    "Kýpros",
    "Kıbrıs",
    "Κυπριακή Δημοκρατία",
-   "Kıbrıs Cumhuriyeti"
+   "Kıbrıs Cumhuriyeti",
+   "Κύπρος",
+   "Δημοκρατία της Κύπρος"
   ]
  },
  {
@@ -450,9 +557,11 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Central Europe",
   "aliases": [
+   "CZ",
    "Czech Republic",
    "Česká republika",
-   "Česko"
+   "Česko",
+   "Czech"
   ]
  },
  {
@@ -461,8 +570,10 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Western Europe",
   "aliases": [
+   "DE",
    "Federal Republic of Germany",
-   "Bundesrepublik Deutschland"
+   "Bundesrepublik Deutschland",
+   "Deutschland"
   ]
  },
  {
@@ -471,12 +582,15 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Eastern Africa",
   "aliases": [
+   "DJ",
    "Republic of Djibouti",
    "Jabuuti",
    "Gabuuti",
    "République de Djibouti",
    "Gabuutih Ummuuno",
-   "Jamhuuriyadda Jabuuti"
+   "Jamhuuriyadda Jabuuti",
+   "جيبوتي",
+   "جمهورية جيبوتي"
   ]
  },
  {
@@ -485,6 +599,7 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Northern Europe",
   "aliases": [
+   "DK",
    "Kingdom of Denmark",
    "Danmark",
    "Kongeriget Danmark"
@@ -496,6 +611,7 @@ export const COUNTRIES = [
   "region": "Americas",
   "subregion": "Caribbean",
   "aliases": [
+   "DM",
    "Commonwealth of Dominica",
    "Dominique",
    "Wai‘tu kubuli"
@@ -506,7 +622,10 @@ export const COUNTRIES = [
   "name": "Dominican Republic",
   "region": "Americas",
   "subregion": "Caribbean",
-  "aliases": []
+  "aliases": [
+   "DO",
+   "República Dominicana"
+  ]
  },
  {
   "code": "DZ",
@@ -514,9 +633,12 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Northern Africa",
   "aliases": [
+   "DZ",
    "People's Democratic Republic of Algeria",
    "Dzayer",
-   "Algérie"
+   "Algérie",
+   "الجزائر",
+   "الجمهورية الديمقراطية الشعبية الجزائرية"
   ]
  },
  {
@@ -525,6 +647,7 @@ export const COUNTRIES = [
   "region": "Americas",
   "subregion": "South America",
   "aliases": [
+   "EC",
    "Republic of Ecuador",
    "República del Ecuador"
   ]
@@ -535,6 +658,7 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Northern Europe",
   "aliases": [
+   "EE",
    "Republic of Estonia",
    "Eesti",
    "Eesti Vabariik"
@@ -546,7 +670,10 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Northern Africa",
   "aliases": [
-   "Arab Republic of Egypt"
+   "EG",
+   "Arab Republic of Egypt",
+   "مصر",
+   "جمهورية مصر العربية"
   ]
  },
  {
@@ -555,11 +682,15 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Eastern Africa",
   "aliases": [
+   "ER",
    "State of Eritrea",
    "ሃገረ ኤርትራ",
    "Dawlat Iritriyá",
    "ʾErtrā",
-   "Iritriyā"
+   "Iritriyā",
+   "إريتريا",
+   "دولة إريتريا",
+   "ኤርትራ"
   ]
  },
  {
@@ -568,8 +699,10 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Southern Europe",
   "aliases": [
+   "ES",
    "Kingdom of Spain",
-   "Reino de España"
+   "Reino de España",
+   "España"
   ]
  },
  {
@@ -578,9 +711,11 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Eastern Africa",
   "aliases": [
+   "ET",
    "Federal Democratic Republic of Ethiopia",
    "ʾĪtyōṗṗyā",
-   "የኢትዮጵያ ፌዴራላዊ ዲሞክራሲያዊ ሪፐብሊክ"
+   "የኢትዮጵያ ፌዴራላዊ ዲሞክራሲያዊ ሪፐብሊክ",
+   "ኢትዮጵያ"
   ]
  },
  {
@@ -589,6 +724,7 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Northern Europe",
   "aliases": [
+   "FI",
    "Republic of Finland",
    "Suomi",
    "Suomen tasavalta",
@@ -601,10 +737,14 @@ export const COUNTRIES = [
   "region": "Oceania",
   "subregion": "Melanesia",
   "aliases": [
+   "FJ",
    "Republic of Fiji",
    "Viti",
    "Matanitu ko Viti",
-   "Fijī Gaṇarājya"
+   "Fijī Gaṇarājya",
+   "Matanitu Tugalala o Viti",
+   "फिजी",
+   "रिपब्लिक ऑफ फीजी"
   ]
  },
  {
@@ -613,6 +753,7 @@ export const COUNTRIES = [
   "region": "Oceania",
   "subregion": "Micronesia",
   "aliases": [
+   "FM",
    "Federated States of Micronesia",
    "Micronesia, Federated States of"
   ]
@@ -623,6 +764,7 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Western Europe",
   "aliases": [
+   "FR",
    "French Republic",
    "République française"
   ]
@@ -633,8 +775,10 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Middle Africa",
   "aliases": [
+   "GA",
    "Gabonese Republic",
-   "République Gabonaise"
+   "République Gabonaise",
+   "République gabonaise"
   ]
  },
  {
@@ -643,9 +787,11 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Northern Europe",
   "aliases": [
+   "GB",
    "United Kingdom of Great Britain and Northern Ireland",
    "UK",
-   "Great Britain"
+   "Great Britain",
+   "Britain"
   ]
  },
  {
@@ -653,7 +799,9 @@ export const COUNTRIES = [
   "name": "Grenada",
   "region": "Americas",
   "subregion": "Caribbean",
-  "aliases": []
+  "aliases": [
+   "GD"
+  ]
  },
  {
   "code": "GE",
@@ -661,7 +809,9 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "Western Asia",
   "aliases": [
-   "Sakartvelo"
+   "GE",
+   "Sakartvelo",
+   "საქართველო"
   ]
  },
  {
@@ -670,6 +820,7 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Western Africa",
   "aliases": [
+   "GH",
    "Republic of Ghana"
   ]
  },
@@ -679,6 +830,7 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Western Africa",
   "aliases": [
+   "GM",
    "Republic of the Gambia"
   ]
  },
@@ -688,8 +840,10 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Western Africa",
   "aliases": [
+   "GN",
    "Republic of Guinea",
-   "République de Guinée"
+   "République de Guinée",
+   "Guinée"
   ]
  },
  {
@@ -698,10 +852,15 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Middle Africa",
   "aliases": [
+   "GQ",
    "Republic of Equatorial Guinea",
    "República de Guinea Ecuatorial",
    "République de Guinée équatoriale",
-   "República da Guiné Equatorial"
+   "República da Guiné Equatorial",
+   "Guinée équatoriale",
+   "République de la Guinée Équatoriale",
+   "Guiné Equatorial",
+   "Guinea Ecuatorial"
   ]
  },
  {
@@ -710,9 +869,11 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Southern Europe",
   "aliases": [
+   "GR",
    "Hellenic Republic",
    "Elláda",
-   "Ελληνική Δημοκρατία"
+   "Ελληνική Δημοκρατία",
+   "Ελλάδα"
   ]
  },
  {
@@ -721,7 +882,9 @@ export const COUNTRIES = [
   "region": "Americas",
   "subregion": "Central America",
   "aliases": [
-   "Republic of Guatemala"
+   "GT",
+   "Republic of Guatemala",
+   "República de Guatemala"
   ]
  },
  {
@@ -730,8 +893,10 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Western Africa",
   "aliases": [
+   "GW",
    "Republic of Guinea-Bissau",
-   "República da Guiné-Bissau"
+   "República da Guiné-Bissau",
+   "Guiné-Bissau"
   ]
  },
  {
@@ -740,6 +905,7 @@ export const COUNTRIES = [
   "region": "Americas",
   "subregion": "South America",
   "aliases": [
+   "GY",
    "Co-operative Republic of Guyana"
   ]
  },
@@ -749,6 +915,7 @@ export const COUNTRIES = [
   "region": "Americas",
   "subregion": "Central America",
   "aliases": [
+   "HN",
    "Republic of Honduras",
    "República de Honduras"
   ]
@@ -759,6 +926,7 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Southeast Europe",
   "aliases": [
+   "HR",
    "Republic of Croatia",
    "Hrvatska",
    "Republika Hrvatska"
@@ -770,9 +938,12 @@ export const COUNTRIES = [
   "region": "Americas",
   "subregion": "Caribbean",
   "aliases": [
+   "HT",
    "Republic of Haiti",
    "République d'Haïti",
-   "Repiblik Ayiti"
+   "Repiblik Ayiti",
+   "Haïti",
+   "Ayiti"
   ]
  },
  {
@@ -780,7 +951,10 @@ export const COUNTRIES = [
   "name": "Hungary",
   "region": "Europe",
   "subregion": "Central Europe",
-  "aliases": []
+  "aliases": [
+   "HU",
+   "Magyarország"
+  ]
  },
  {
   "code": "ID",
@@ -788,6 +962,7 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "South-Eastern Asia",
   "aliases": [
+   "ID",
    "Republic of Indonesia",
    "Republik Indonesia"
   ]
@@ -798,6 +973,7 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Northern Europe",
   "aliases": [
+   "IE",
    "Republic of Ireland",
    "Éire",
    "Poblacht na hÉireann"
@@ -809,8 +985,13 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "Western Asia",
   "aliases": [
+   "IL",
    "State of Israel",
-   "Medīnat Yisrā'el"
+   "Medīnat Yisrā'el",
+   "إسرائيل",
+   "دولة إسرائيل",
+   "ישראל",
+   "מדינת ישראל"
   ]
  },
  {
@@ -819,10 +1000,14 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "Southern Asia",
   "aliases": [
+   "IN",
    "Republic of India",
    "Bhārat",
    "Bharat Ganrajya",
-   "இந்தியா"
+   "இந்தியா",
+   "भारत",
+   "भारत गणराज्य",
+   "இந்தியக் குடியரசு"
   ]
  },
  {
@@ -831,8 +1016,15 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "Western Asia",
   "aliases": [
+   "IQ",
    "Republic of Iraq",
-   "Jumhūriyyat al-‘Irāq"
+   "Jumhūriyyat al-‘Irāq",
+   "العراق",
+   "جمهورية العراق",
+   "ܩܘܼܛܢܵܐ",
+   "ܩܘܼܛܢܵܐ ܐܝܼܪܲܩ",
+   "کۆماری",
+   "کۆماری عێراق"
   ]
  },
  {
@@ -841,9 +1033,12 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "Southern Asia",
   "aliases": [
+   "IR",
    "Islamic Republic of Iran",
    "Iran, Islamic Republic of",
-   "Jomhuri-ye Eslāmi-ye Irān"
+   "Jomhuri-ye Eslāmi-ye Irān",
+   "ایران",
+   "جمهوری اسلامی ایران"
   ]
  },
  {
@@ -852,9 +1047,11 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Northern Europe",
   "aliases": [
+   "IS",
    "Island",
    "Republic of Iceland",
-   "Lýðveldið Ísland"
+   "Lýðveldið Ísland",
+   "Ísland"
   ]
  },
  {
@@ -863,8 +1060,10 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Southern Europe",
   "aliases": [
+   "IT",
    "Italian Republic",
-   "Repubblica italiana"
+   "Repubblica italiana",
+   "Italia"
   ]
  },
  {
@@ -872,7 +1071,9 @@ export const COUNTRIES = [
   "name": "Jamaica",
   "region": "Americas",
   "subregion": "Caribbean",
-  "aliases": []
+  "aliases": [
+   "JM"
+  ]
  },
  {
   "code": "JO",
@@ -880,8 +1081,11 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "Western Asia",
   "aliases": [
+   "JO",
    "Hashemite Kingdom of Jordan",
-   "al-Mamlakah al-Urdunīyah al-Hāshimīyah"
+   "al-Mamlakah al-Urdunīyah al-Hāshimīyah",
+   "الأردن",
+   "المملكة الأردنية الهاشمية"
   ]
  },
  {
@@ -890,8 +1094,10 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "Eastern Asia",
   "aliases": [
+   "JP",
    "Nippon",
-   "Nihon"
+   "Nihon",
+   "日本"
   ]
  },
  {
@@ -900,6 +1106,7 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Eastern Africa",
   "aliases": [
+   "KE",
    "Republic of Kenya",
    "Jamhuri ya Kenya"
   ]
@@ -910,10 +1117,13 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "Central Asia",
   "aliases": [
+   "KG",
    "Kyrgyz Republic",
    "Киргизия",
    "Кыргыз Республикасы",
-   "Kyrgyz Respublikasy"
+   "Kyrgyz Respublikasy",
+   "Кыргызстан",
+   "Кыргызская Республика"
   ]
  },
  {
@@ -922,7 +1132,10 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "South-Eastern Asia",
   "aliases": [
-   "Kingdom of Cambodia"
+   "KH",
+   "Kingdom of Cambodia",
+   "Kâmpŭchéa",
+   "ព្រះរាជាណាចក្រកម្ពុជា"
   ]
  },
  {
@@ -931,6 +1144,7 @@ export const COUNTRIES = [
   "region": "Oceania",
   "subregion": "Micronesia",
   "aliases": [
+   "KI",
    "Independent and Sovereign Republic of Kiribati",
    "Republic of Kiribati",
    "Ribaberiki Kiribati"
@@ -942,10 +1156,15 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Eastern Africa",
   "aliases": [
+   "KM",
    "Union of the Comoros",
    "Union des Comores",
    "Udzima wa Komori",
-   "al-Ittiḥād al-Qumurī"
+   "al-Ittiḥād al-Qumurī",
+   "جزر القمر",
+   "الاتحاد القمري",
+   "Comores",
+   "Komori"
   ]
  },
  {
@@ -954,7 +1173,9 @@ export const COUNTRIES = [
   "region": "Americas",
   "subregion": "Caribbean",
   "aliases": [
-   "Federation of Saint Christopher and Nevis"
+   "KN",
+   "Federation of Saint Christopher and Nevis",
+   "St Kitts"
   ]
  },
  {
@@ -963,13 +1184,15 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "Eastern Asia",
   "aliases": [
+   "KP",
    "Democratic People's Republic of Korea",
    "DPRK",
    "조선민주주의인민공화국",
    "Chosŏn Minjujuŭi Inmin Konghwaguk",
    "Korea, Democratic People's Republic of",
    "북한",
-   "북조선"
+   "북조선",
+   "조선"
   ]
  },
  {
@@ -978,10 +1201,14 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "Eastern Asia",
   "aliases": [
+   "KR",
    "Republic of Korea",
    "Korea, Republic of",
    "남한",
-   "남조선"
+   "남조선",
+   "한국",
+   "대한민국",
+   "ROK"
   ]
  },
  {
@@ -990,8 +1217,11 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "Western Asia",
   "aliases": [
+   "KW",
    "State of Kuwait",
-   "Dawlat al-Kuwait"
+   "Dawlat al-Kuwait",
+   "الكويت",
+   "دولة الكويت"
   ]
  },
  {
@@ -1000,13 +1230,15 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "Central Asia",
   "aliases": [
+   "KZ",
    "Republic of Kazakhstan",
    "Qazaqstan",
    "Казахстан",
    "Қазақстан Республикасы",
    "Qazaqstan Respublïkası",
    "Республика Казахстан",
-   "Respublika Kazakhstan"
+   "Respublika Kazakhstan",
+   "Қазақстан"
   ]
  },
  {
@@ -1015,9 +1247,12 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "South-Eastern Asia",
   "aliases": [
+   "LA",
    "Lao People's Democratic Republic",
    "Lao",
-   "Sathalanalat Paxathipatai Paxaxon Lao"
+   "Sathalanalat Paxathipatai Paxaxon Lao",
+   "ສປປລາວ",
+   "ສາທາລະນະ ຊາທິປະໄຕ ຄົນລາວ ຂອງ"
   ]
  },
  {
@@ -1026,8 +1261,13 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "Western Asia",
   "aliases": [
+   "LB",
    "Lebanese Republic",
-   "Al-Jumhūrīyah Al-Libnānīyah"
+   "Al-Jumhūrīyah Al-Libnānīyah",
+   "لبنان",
+   "الجمهورية اللبنانية",
+   "Liban",
+   "République libanaise"
   ]
  },
  {
@@ -1035,7 +1275,9 @@ export const COUNTRIES = [
   "name": "Saint Lucia",
   "region": "Americas",
   "subregion": "Caribbean",
-  "aliases": []
+  "aliases": [
+   "LC"
+  ]
  },
  {
   "code": "LI",
@@ -1043,6 +1285,7 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Western Europe",
   "aliases": [
+   "LI",
    "Principality of Liechtenstein",
    "Fürstentum Liechtenstein"
   ]
@@ -1053,8 +1296,13 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "Southern Asia",
   "aliases": [
+   "LK",
    "Democratic Socialist Republic of Sri Lanka",
-   "ilaṅkai"
+   "ilaṅkai",
+   "ශ්‍රී ලංකාව",
+   "ශ්‍රී ලංකා ප්‍රජාතාන්ත්‍රික සමාජවාදී ජනරජය",
+   "இலங்கை",
+   "இலங்கை சனநாயக சோசலிசக் குடியரசு"
   ]
  },
  {
@@ -1063,6 +1311,7 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Western Africa",
   "aliases": [
+   "LR",
    "Republic of Liberia"
   ]
  },
@@ -1072,6 +1321,7 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Southern Africa",
   "aliases": [
+   "LS",
    "Kingdom of Lesotho",
    "Muso oa Lesotho"
   ]
@@ -1082,8 +1332,11 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Northern Europe",
   "aliases": [
+   "LT",
    "Republic of Lithuania",
-   "Lietuvos Respublika"
+   "Lietuvos Respublika",
+   "Lietuva",
+   "Lietuvos Respublikos"
   ]
  },
  {
@@ -1092,10 +1345,13 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Western Europe",
   "aliases": [
+   "LU",
    "Grand Duchy of Luxembourg",
    "Grand-Duché de Luxembourg",
    "Großherzogtum Luxemburg",
-   "Groussherzogtum Lëtzebuerg"
+   "Groussherzogtum Lëtzebuerg",
+   "Luxemburg",
+   "Lëtzebuerg"
   ]
  },
  {
@@ -1104,8 +1360,11 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Northern Europe",
   "aliases": [
+   "LV",
    "Republic of Latvia",
-   "Latvijas Republika"
+   "Latvijas Republika",
+   "Latvija",
+   "Latvijas Republikas"
   ]
  },
  {
@@ -1114,8 +1373,11 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Northern Africa",
   "aliases": [
+   "LY",
    "State of Libya",
-   "Dawlat Libya"
+   "Dawlat Libya",
+   "ليبيا",
+   "دولة ليبيا"
   ]
  },
  {
@@ -1124,8 +1386,13 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Northern Africa",
   "aliases": [
+   "MA",
    "Kingdom of Morocco",
-   "Al-Mamlakah al-Maġribiyah"
+   "Al-Mamlakah al-Maġribiyah",
+   "المغرب",
+   "المملكة المغربية",
+   "ⵍⵎⴰⵖⵔⵉⴱ",
+   "ⵜⴰⴳⵍⴷⵉⵜ ⵏ ⵍⵎⵖⵔⵉⴱ"
   ]
  },
  {
@@ -1134,6 +1401,7 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Western Europe",
   "aliases": [
+   "MC",
    "Principality of Monaco",
    "Principauté de Monaco"
   ]
@@ -1144,6 +1412,7 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Eastern Europe",
   "aliases": [
+   "MD",
    "Republic of Moldova",
    "Moldova, Republic of",
    "Republica Moldova"
@@ -1155,7 +1424,9 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Southeast Europe",
   "aliases": [
-   "Crna Gora"
+   "ME",
+   "Crna Gora",
+   "Црна Гора"
   ]
  },
  {
@@ -1164,9 +1435,11 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Eastern Africa",
   "aliases": [
+   "MG",
    "Republic of Madagascar",
    "Repoblikan'i Madagasikara",
-   "République de Madagascar"
+   "République de Madagascar",
+   "Madagasikara"
   ]
  },
  {
@@ -1175,8 +1448,10 @@ export const COUNTRIES = [
   "region": "Oceania",
   "subregion": "Micronesia",
   "aliases": [
+   "MH",
    "Republic of the Marshall Islands",
-   "Aolepān Aorōkin M̧ajeļ"
+   "Aolepān Aorōkin M̧ajeļ",
+   "M̧ajeļ"
   ]
  },
  {
@@ -1185,11 +1460,13 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Southeast Europe",
   "aliases": [
+   "MK",
    "Republic of North Macedonia",
    "The former Yugoslav Republic of Macedonia",
    "Macedonia, The Former Yugoslav Republic of",
    "Република Северна Македонија",
-   "Macedonia"
+   "Macedonia",
+   "Македонија"
   ]
  },
  {
@@ -1198,6 +1475,7 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Western Africa",
   "aliases": [
+   "ML",
    "Republic of Mali",
    "République du Mali"
   ]
@@ -1208,9 +1486,12 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "South-Eastern Asia",
   "aliases": [
+   "MM",
    "Republic of the Union of Myanmar",
    "Burma",
-   "Pyidaunzu Thanmăda Myăma Nainngandaw"
+   "Pyidaunzu Thanmăda Myăma Nainngandaw",
+   "မြန်မာ",
+   "ပြည်ထောင်စု သမ္မတ မြန်မာနိုင်ငံတော်"
   ]
  },
  {
@@ -1218,7 +1499,10 @@ export const COUNTRIES = [
   "name": "Mongolia",
   "region": "Asia",
   "subregion": "Eastern Asia",
-  "aliases": []
+  "aliases": [
+   "MN",
+   "Монгол улс"
+  ]
  },
  {
   "code": "MR",
@@ -1226,8 +1510,11 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Western Africa",
   "aliases": [
+   "MR",
    "Islamic Republic of Mauritania",
-   "al-Jumhūriyyah al-ʾIslāmiyyah al-Mūrītāniyyah"
+   "al-Jumhūriyyah al-ʾIslāmiyyah al-Mūrītāniyyah",
+   "موريتانيا",
+   "الجمهورية الإسلامية الموريتانية"
   ]
  },
  {
@@ -1236,8 +1523,10 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Southern Europe",
   "aliases": [
+   "MT",
    "Republic of Malta",
-   "Repubblika ta' Malta"
+   "Repubblika ta' Malta",
+   "Repubblika ta ' Malta"
   ]
  },
  {
@@ -1246,8 +1535,12 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Eastern Africa",
   "aliases": [
+   "MU",
    "Republic of Mauritius",
-   "République de Maurice"
+   "République de Maurice",
+   "Maurice",
+   "Moris",
+   "Republik Moris"
   ]
  },
  {
@@ -1256,9 +1549,12 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "Southern Asia",
   "aliases": [
+   "MV",
    "Republic of the Maldives",
    "Maldive Islands",
-   "Dhivehi Raajjeyge Jumhooriyya"
+   "Dhivehi Raajjeyge Jumhooriyya",
+   "ދިވެހިރާއްޖޭގެ",
+   "ދިވެހިރާއްޖޭގެ ޖުމްހޫރިއްޔާ"
   ]
  },
  {
@@ -1267,7 +1563,10 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Eastern Africa",
   "aliases": [
-   "Republic of Malawi"
+   "MW",
+   "Republic of Malawi",
+   "Malaŵi",
+   "Chalo cha Malawi, Dziko la Malaŵi"
   ]
  },
  {
@@ -1276,9 +1575,11 @@ export const COUNTRIES = [
   "region": "Americas",
   "subregion": "North America",
   "aliases": [
+   "MX",
    "United Mexican States",
    "Mexicanos",
-   "Estados Unidos Mexicanos"
+   "Estados Unidos Mexicanos",
+   "México"
   ]
  },
  {
@@ -1286,7 +1587,10 @@ export const COUNTRIES = [
   "name": "Malaysia",
   "region": "Asia",
   "subregion": "South-Eastern Asia",
-  "aliases": []
+  "aliases": [
+   "MY",
+   "مليسيا"
+  ]
  },
  {
   "code": "MZ",
@@ -1294,8 +1598,10 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Eastern Africa",
   "aliases": [
+   "MZ",
    "Republic of Mozambique",
-   "República de Moçambique"
+   "República de Moçambique",
+   "Moçambique"
   ]
  },
  {
@@ -1304,8 +1610,12 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Southern Africa",
   "aliases": [
+   "NA",
    "Republic of Namibia",
-   "Namibië"
+   "Namibië",
+   "Republiek van Namibië",
+   "Republik Namibia",
+   "Lefatshe la Namibia"
   ]
  },
  {
@@ -1314,8 +1624,10 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Western Africa",
   "aliases": [
+   "NE",
    "Republic of Niger",
-   "Nijar"
+   "Nijar",
+   "République du Niger"
   ]
  },
  {
@@ -1324,6 +1636,7 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Western Africa",
   "aliases": [
+   "NG",
    "Federal Republic of Nigeria",
    "Nijeriya",
    "Naíjíríà"
@@ -1335,6 +1648,7 @@ export const COUNTRIES = [
   "region": "Americas",
   "subregion": "Central America",
   "aliases": [
+   "NI",
    "Republic of Nicaragua",
    "República de Nicaragua"
   ]
@@ -1345,10 +1659,12 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Western Europe",
   "aliases": [
+   "NL",
    "Kingdom of the Netherlands",
    "Holland",
    "Nederland",
-   "The Netherlands"
+   "The Netherlands",
+   "Koninkrijk der Nederlanden"
   ]
  },
  {
@@ -1357,11 +1673,14 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Northern Europe",
   "aliases": [
+   "NO",
    "Kingdom of Norway",
    "Norge",
    "Noreg",
    "Kongeriket Norge",
-   "Kongeriket Noreg"
+   "Kongeriket Noreg",
+   "Norgga",
+   "Norgga gonagasriika"
   ]
  },
  {
@@ -1370,8 +1689,11 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "Southern Asia",
   "aliases": [
+   "NP",
    "Federal Democratic Republic of Nepal",
-   "Loktāntrik Ganatantra Nepāl"
+   "Loktāntrik Ganatantra Nepāl",
+   "नेपाल",
+   "नेपाल संघीय लोकतान्त्रिक गणतन्त्र"
   ]
  },
  {
@@ -1380,6 +1702,7 @@ export const COUNTRIES = [
   "region": "Oceania",
   "subregion": "Micronesia",
   "aliases": [
+   "NR",
    "Republic of Nauru",
    "Naoero",
    "Pleasant Island",
@@ -1392,6 +1715,7 @@ export const COUNTRIES = [
   "region": "Oceania",
   "subregion": "Australia and New Zealand",
   "aliases": [
+   "NZ",
    "Aotearoa"
   ]
  },
@@ -1401,8 +1725,11 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "Western Asia",
   "aliases": [
+   "OM",
    "Sultanate of Oman",
-   "Salṭanat ʻUmān"
+   "Salṭanat ʻUmān",
+   "عمان",
+   "سلطنة عمان"
   ]
  },
  {
@@ -1411,8 +1738,10 @@ export const COUNTRIES = [
   "region": "Americas",
   "subregion": "Central America",
   "aliases": [
+   "PA",
    "Republic of Panama",
-   "República de Panamá"
+   "República de Panamá",
+   "Panamá"
   ]
  },
  {
@@ -1421,8 +1750,13 @@ export const COUNTRIES = [
   "region": "Americas",
   "subregion": "South America",
   "aliases": [
+   "PE",
    "Republic of Peru",
-   "República del Perú"
+   "República del Perú",
+   "Piruw",
+   "Piruw Suyu",
+   "Piruw Ripuwlika",
+   "Perú"
   ]
  },
  {
@@ -1431,8 +1765,12 @@ export const COUNTRIES = [
   "region": "Oceania",
   "subregion": "Melanesia",
   "aliases": [
+   "PG",
    "Independent State of Papua New Guinea",
-   "Independen Stet bilong Papua Niugini"
+   "Independen Stet bilong Papua Niugini",
+   "Papua Niu Gini",
+   "Papua Niugini",
+   "PNG"
   ]
  },
  {
@@ -1441,8 +1779,11 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "South-Eastern Asia",
   "aliases": [
+   "PH",
    "Republic of the Philippines",
-   "Repúblika ng Pilipinas"
+   "Repúblika ng Pilipinas",
+   "Pilipinas",
+   "Republika ng Pilipinas"
   ]
  },
  {
@@ -1451,9 +1792,12 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "Southern Asia",
   "aliases": [
+   "PK",
    "Islamic Republic of Pakistan",
    "Pākistān",
-   "Islāmī Jumhūriya'eh Pākistān"
+   "Islāmī Jumhūriya'eh Pākistān",
+   "پاكستان",
+   "اسلامی جمہوریۂ پاكستان"
   ]
  },
  {
@@ -1462,8 +1806,10 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Central Europe",
   "aliases": [
+   "PL",
    "Republic of Poland",
-   "Rzeczpospolita Polska"
+   "Rzeczpospolita Polska",
+   "Polska"
   ]
  },
  {
@@ -1472,9 +1818,11 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Southern Europe",
   "aliases": [
+   "PT",
    "Portuguese Republic",
    "Portuguesa",
-   "República Portuguesa"
+   "República Portuguesa",
+   "República português"
   ]
  },
  {
@@ -1483,8 +1831,10 @@ export const COUNTRIES = [
   "region": "Oceania",
   "subregion": "Micronesia",
   "aliases": [
+   "PW",
    "Republic of Palau",
-   "Beluu er a Belau"
+   "Beluu er a Belau",
+   "Belau"
   ]
  },
  {
@@ -1493,9 +1843,12 @@ export const COUNTRIES = [
   "region": "Americas",
   "subregion": "South America",
   "aliases": [
+   "PY",
    "Republic of Paraguay",
    "República del Paraguay",
-   "Tetã Paraguái"
+   "Tetã Paraguái",
+   "Paraguái",
+   "República de Paraguay"
   ]
  },
  {
@@ -1504,8 +1857,11 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "Western Asia",
   "aliases": [
+   "QA",
    "State of Qatar",
-   "Dawlat Qaṭar"
+   "Dawlat Qaṭar",
+   "قطر",
+   "دولة قطر"
   ]
  },
  {
@@ -1514,6 +1870,7 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Southeast Europe",
   "aliases": [
+   "RO",
    "Rumania",
    "Roumania",
    "România"
@@ -1525,6 +1882,7 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Southeast Europe",
   "aliases": [
+   "RS",
    "Republic of Serbia",
    "Srbija",
    "Republika Srbija",
@@ -1538,8 +1896,10 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Eastern Europe",
   "aliases": [
+   "RU",
    "Russian Federation",
-   "Российская Федерация"
+   "Российская Федерация",
+   "Россия"
   ]
  },
  {
@@ -1548,9 +1908,11 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Eastern Africa",
   "aliases": [
+   "RW",
    "Republic of Rwanda",
    "Repubulika y'u Rwanda",
-   "République du Rwanda"
+   "République du Rwanda",
+   "République rwandaise"
   ]
  },
  {
@@ -1559,9 +1921,13 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "Western Asia",
   "aliases": [
+   "SA",
    "Kingdom of Saudi Arabia",
    "Saudi",
-   "Al-Mamlakah al-‘Arabiyyah as-Su‘ūdiyyah"
+   "Al-Mamlakah al-‘Arabiyyah as-Su‘ūdiyyah",
+   "السعودية",
+   "المملكة العربية السعودية",
+   "KSA"
   ]
  },
  {
@@ -1569,7 +1935,9 @@ export const COUNTRIES = [
   "name": "Solomon Islands",
   "region": "Oceania",
   "subregion": "Melanesia",
-  "aliases": []
+  "aliases": [
+   "SB"
+  ]
  },
  {
   "code": "SC",
@@ -1577,9 +1945,11 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Eastern Africa",
   "aliases": [
+   "SC",
    "Republic of Seychelles",
    "Repiblik Sesel",
-   "République des Seychelles"
+   "République des Seychelles",
+   "Sesel"
   ]
  },
  {
@@ -1588,8 +1958,11 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Northern Africa",
   "aliases": [
+   "SD",
    "Republic of the Sudan",
-   "Jumhūrīyat as-Sūdān"
+   "Jumhūrīyat as-Sūdān",
+   "السودان",
+   "جمهورية السودان"
   ]
  },
  {
@@ -1598,8 +1971,10 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Northern Europe",
   "aliases": [
+   "SE",
    "Kingdom of Sweden",
-   "Konungariket Sverige"
+   "Konungariket Sverige",
+   "Sverige"
   ]
  },
  {
@@ -1608,10 +1983,14 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "South-Eastern Asia",
   "aliases": [
+   "SG",
    "Republic of Singapore",
    "Singapura",
    "Republik Singapura",
-   "新加坡共和国"
+   "新加坡共和国",
+   "சிங்கப்பூர்",
+   "சிங்கப்பூர் குடியரசு",
+   "新加坡"
   ]
  },
  {
@@ -1620,8 +1999,10 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Central Europe",
   "aliases": [
+   "SI",
    "Republic of Slovenia",
-   "Republika Slovenija"
+   "Republika Slovenija",
+   "Slovenija"
   ]
  },
  {
@@ -1630,8 +2011,10 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Central Europe",
   "aliases": [
+   "SK",
    "Slovak Republic",
-   "Slovenská republika"
+   "Slovenská republika",
+   "Slovensko"
   ]
  },
  {
@@ -1640,6 +2023,7 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Western Africa",
   "aliases": [
+   "SL",
    "Republic of Sierra Leone"
   ]
  },
@@ -1649,9 +2033,11 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Southern Europe",
   "aliases": [
+   "SM",
    "Most Serene Republic of San Marino",
    "Republic of San Marino",
-   "Repubblica di San Marino"
+   "Repubblica di San Marino",
+   "Serenissima Repubblica di San Marino"
   ]
  },
  {
@@ -1660,8 +2046,10 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Western Africa",
   "aliases": [
+   "SN",
    "Republic of Senegal",
-   "République du Sénégal"
+   "République du Sénégal",
+   "Sénégal"
   ]
  },
  {
@@ -1670,10 +2058,14 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Eastern Africa",
   "aliases": [
+   "SO",
    "Federal Republic of Somalia",
    "aṣ-Ṣūmāl",
    "Jamhuuriyadda Federaalka Soomaaliya",
-   "Jumhūriyyat aṣ-Ṣūmāl al-Fiderāliyya"
+   "Jumhūriyyat aṣ-Ṣūmāl al-Fiderāliyya",
+   "الصومال",
+   "جمهورية الصومال الفيدرالية",
+   "Soomaaliya"
   ]
  },
  {
@@ -1682,6 +2074,7 @@ export const COUNTRIES = [
   "region": "Americas",
   "subregion": "South America",
   "aliases": [
+   "SR",
    "Republic of Suriname",
    "Sarnam",
    "Sranangron",
@@ -1694,6 +2087,7 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Middle Africa",
   "aliases": [
+   "SS",
    "Republic of South Sudan"
   ]
  },
@@ -1703,9 +2097,14 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Middle Africa",
   "aliases": [
+   "ST",
    "Democratic Republic of São Tomé and Príncipe",
    "Sao Tome and Principe",
-   "República Democrática de São Tomé e Príncipe"
+   "República Democrática de São Tomé e Príncipe",
+   "São Tomé e Príncipe",
+   "República Democrática do São Tomé e Príncipe",
+   "STP",
+   "Sao Tome"
   ]
  },
  {
@@ -1714,6 +2113,7 @@ export const COUNTRIES = [
   "region": "Americas",
   "subregion": "Central America",
   "aliases": [
+   "SV",
    "Republic of El Salvador",
    "República de El Salvador"
   ]
@@ -1724,8 +2124,11 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "Western Asia",
   "aliases": [
+   "SY",
    "Syrian Arab Republic",
-   "Al-Jumhūrīyah Al-ʻArabīyah As-Sūrīyah"
+   "Al-Jumhūrīyah Al-ʻArabīyah As-Sūrīyah",
+   "سوريا",
+   "الجمهورية العربية السورية"
   ]
  },
  {
@@ -1734,12 +2137,14 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Southern Africa",
   "aliases": [
+   "SZ",
    "Kingdom of Eswatini",
    "Swaziland",
    "weSwatini",
    "Swatini",
    "Ngwane",
-   "Umbuso weSwatini"
+   "Umbuso weSwatini",
+   "eSwatini"
   ]
  },
  {
@@ -1748,9 +2153,12 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Middle Africa",
   "aliases": [
+   "TD",
    "Republic of Chad",
    "Tchad",
-   "République du Tchad"
+   "République du Tchad",
+   "تشاد",
+   "جمهورية تشاد"
   ]
  },
  {
@@ -1759,9 +2167,11 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Western Africa",
   "aliases": [
+   "TG",
    "Togolese Republic",
    "Togolese",
-   "République Togolaise"
+   "République Togolaise",
+   "République togolaise"
   ]
  },
  {
@@ -1770,11 +2180,13 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "South-Eastern Asia",
   "aliases": [
+   "TH",
    "Kingdom of Thailand",
    "Prathet",
    "Thai",
    "ราชอาณาจักรไทย",
-   "Ratcha Anachak Thai"
+   "Ratcha Anachak Thai",
+   "ประเทศไทย"
   ]
  },
  {
@@ -1783,10 +2195,14 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "Central Asia",
   "aliases": [
+   "TJ",
    "Republic of Tajikistan",
    "Toçikiston",
    "Ҷумҳурии Тоҷикистон",
-   "Çumhuriyi Toçikiston"
+   "Çumhuriyi Toçikiston",
+   "Таджикистан",
+   "Республика Таджикистан",
+   "Тоҷикистон"
   ]
  },
  {
@@ -1795,13 +2211,15 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "South-Eastern Asia",
   "aliases": [
+   "TL",
    "Democratic Republic of Timor-Leste",
    "East Timor",
    "Timor",
    "República Democrática de Timor-Leste",
    "Repúblika Demokrátika Timór-Leste",
    "Timór Lorosa'e",
-   "Timor Lorosae"
+   "Timor Lorosae",
+   "Timór-Leste"
   ]
  },
  {
@@ -1809,7 +2227,12 @@ export const COUNTRIES = [
   "name": "Turkmenistan",
   "region": "Asia",
   "subregion": "Central Asia",
-  "aliases": []
+  "aliases": [
+   "TM",
+   "Туркмения",
+   "Туркменистан",
+   "Türkmenistan"
+  ]
  },
  {
   "code": "TN",
@@ -1817,9 +2240,12 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Northern Africa",
   "aliases": [
+   "TN",
    "Tunisian Republic",
    "Republic of Tunisia",
-   "al-Jumhūriyyah at-Tūnisiyyah"
+   "al-Jumhūriyyah at-Tūnisiyyah",
+   "تونس",
+   "الجمهورية التونسية"
   ]
  },
  {
@@ -1828,6 +2254,7 @@ export const COUNTRIES = [
   "region": "Oceania",
   "subregion": "Polynesia",
   "aliases": [
+   "TO",
    "Kingdom of Tonga"
   ]
  },
@@ -1837,10 +2264,12 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "Western Asia",
   "aliases": [
+   "TR",
    "Republic of Türkiye",
    "Turkiye",
    "Republic of Turkey",
-   "Türkiye Cumhuriyeti"
+   "Türkiye Cumhuriyeti",
+   "Turkey"
   ]
  },
  {
@@ -1849,6 +2278,7 @@ export const COUNTRIES = [
   "region": "Americas",
   "subregion": "Caribbean",
   "aliases": [
+   "TT",
    "Republic of Trinidad and Tobago"
   ]
  },
@@ -1857,7 +2287,9 @@ export const COUNTRIES = [
   "name": "Tuvalu",
   "region": "Oceania",
   "subregion": "Polynesia",
-  "aliases": []
+  "aliases": [
+   "TV"
+  ]
  },
  {
   "code": "TZ",
@@ -1865,6 +2297,7 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Eastern Africa",
   "aliases": [
+   "TZ",
    "United Republic of Tanzania",
    "Tanzania, United Republic of",
    "Jamhuri ya Muungano wa Tanzania"
@@ -1876,7 +2309,9 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Eastern Europe",
   "aliases": [
-   "Ukrayina"
+   "UA",
+   "Ukrayina",
+   "Україна"
   ]
  },
  {
@@ -1885,6 +2320,7 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Eastern Africa",
   "aliases": [
+   "UG",
    "Republic of Uganda",
    "Jamhuri ya Uganda"
   ]
@@ -1895,8 +2331,10 @@ export const COUNTRIES = [
   "region": "Americas",
   "subregion": "North America",
   "aliases": [
+   "US",
    "United States of America",
-   "USA"
+   "USA",
+   "America"
   ]
  },
  {
@@ -1905,6 +2343,7 @@ export const COUNTRIES = [
   "region": "Americas",
   "subregion": "South America",
   "aliases": [
+   "UY",
    "Oriental Republic of Uruguay",
    "República Oriental del Uruguay"
   ]
@@ -1915,9 +2354,14 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "Central Asia",
   "aliases": [
+   "UZ",
    "Republic of Uzbekistan",
    "O‘zbekiston Respublikasi",
-   "Ўзбекистон Республикаси"
+   "Ўзбекистон Республикаси",
+   "Узбекистан",
+   "Республика Узбекистан",
+   "O‘zbekiston",
+   "O'zbekiston Respublikasi"
   ]
  },
  {
@@ -1926,10 +2370,15 @@ export const COUNTRIES = [
   "region": "Europe",
   "subregion": "Southern Europe",
   "aliases": [
+   "VA",
    "Vatican City State",
    "Holy See (Vatican City State)",
    "Vatican",
-   "Stato della Città del Vaticano"
+   "Stato della Città del Vaticano",
+   "Vaticano",
+   "Vaticanæ",
+   "Status Civitatis Vaticanæ",
+   "Holy See"
   ]
  },
  {
@@ -1937,7 +2386,11 @@ export const COUNTRIES = [
   "name": "Saint Vincent and the Grenadines",
   "region": "Americas",
   "subregion": "Caribbean",
-  "aliases": []
+  "aliases": [
+   "VC",
+   "SVG",
+   "St Vincent"
+  ]
  },
  {
   "code": "VE",
@@ -1945,6 +2398,7 @@ export const COUNTRIES = [
   "region": "Americas",
   "subregion": "South America",
   "aliases": [
+   "VE",
    "Bolivarian Republic of Venezuela",
    "Venezuela, Bolivarian Republic of",
    "República Bolivariana de Venezuela"
@@ -1956,9 +2410,12 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "South-Eastern Asia",
   "aliases": [
+   "VN",
    "Socialist Republic of Vietnam",
    "Cộng hòa Xã hội chủ nghĩa Việt Nam",
-   "Viet Nam"
+   "Viet Nam",
+   "Việt Nam",
+   "Cộng hòa xã hội chủ nghĩa Việt Nam"
   ]
  },
  {
@@ -1967,6 +2424,7 @@ export const COUNTRIES = [
   "region": "Oceania",
   "subregion": "Melanesia",
   "aliases": [
+   "VU",
    "Republic of Vanuatu",
    "Ripablik blong Vanuatu",
    "République de Vanuatu"
@@ -1978,8 +2436,10 @@ export const COUNTRIES = [
   "region": "Oceania",
   "subregion": "Polynesia",
   "aliases": [
+   "WS",
    "Independent State of Samoa",
-   "Malo Saʻoloto Tutoʻatasi o Sāmoa"
+   "Malo Saʻoloto Tutoʻatasi o Sāmoa",
+   "Sāmoa"
   ]
  },
  {
@@ -1988,9 +2448,12 @@ export const COUNTRIES = [
   "region": "Asia",
   "subregion": "Western Asia",
   "aliases": [
+   "YE",
    "Republic of Yemen",
    "Yemeni Republic",
-   "al-Jumhūriyyah al-Yamaniyyah"
+   "al-Jumhūriyyah al-Yamaniyyah",
+   "اليمن",
+   "الجمهورية اليمنية"
   ]
  },
  {
@@ -1999,9 +2462,28 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Southern Africa",
   "aliases": [
+   "ZA",
    "Republic of South Africa",
    "RSA",
-   "Suid-Afrika"
+   "Suid-Afrika",
+   "Republiek van Suid-Afrika",
+   "Sewula Afrika",
+   "IRiphabliki yeSewula Afrika",
+   "Afrika-Borwa",
+   "Rephaboliki ya Afrika-Borwa ",
+   "Afrika Borwa",
+   "Rephaboliki ya Afrika Borwa",
+   "Ningizimu Afrika",
+   "IRiphabhulikhi yeNingizimu Afrika",
+   "Aforika Borwa",
+   "Rephaboliki ya Aforika Borwa",
+   "Afrika Dzonga",
+   "Riphabliki ra Afrika Dzonga",
+   "Afurika Tshipembe",
+   "Riphabuḽiki ya Afurika Tshipembe",
+   "Mzantsi Afrika",
+   "IRiphabliki yaseMzantsi Afrika",
+   "IRiphabliki yaseNingizimu Afrika"
   ]
  },
  {
@@ -2010,6 +2492,7 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Eastern Africa",
   "aliases": [
+   "ZM",
    "Republic of Zambia"
   ]
  },
@@ -2019,6 +2502,7 @@ export const COUNTRIES = [
   "region": "Africa",
   "subregion": "Eastern Africa",
   "aliases": [
+   "ZW",
    "Republic of Zimbabwe"
   ]
  }

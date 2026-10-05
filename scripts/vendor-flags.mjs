@@ -28,22 +28,54 @@ const SOURCE = "https://raw.githubusercontent.com/mledoze/countries/master/count
 const FLAG = (code) => `https://flagcdn.com/${code}.svg`;
 const REGIONS = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 
+// Names people type that the upstream list lacks: abbreviations, short and
+// older forms, and names in the country's own language. Added on top of
+// upstream's, by country code. Each must name only its own country;
+// scripts/test-quiz.mjs checks they all match.
+const EXTRA_NAMES = {
+  AE: ["Emirates"],
+  BA: ["BiH", "Bosnia"],
+  CD: ["Congo-Kinshasa", "Zaire"],
+  CF: ["CAR"],
+  CG: ["Congo-Brazzaville"],
+  CN: ["PRC"],
+  CZ: ["Czech"],
+  ES: ["España"],
+  GB: ["Britain", "Great Britain"],
+  KN: ["St Kitts"],
+  KR: ["ROK"],
+  MK: ["Macedonia"],
+  NZ: ["Aotearoa"],
+  PG: ["PNG"],
+  SA: ["KSA"],
+  ST: ["STP", "Sao Tome"],
+  TR: ["Turkey"],
+  US: ["America"],
+  VA: ["Holy See", "Vatican"],
+  VC: ["SVG", "St Vincent"],
+};
+
 const res = await fetch(SOURCE);
 if (!res.ok) throw new Error(`countries: ${res.status}`);
 const raw = await res.json();
 
 // The same rule the original game used: UN members or independent states.
+for (const code of Object.keys(EXTRA_NAMES)) {
+  if (!raw.some((c) => c.cca2 === code)) throw new Error(`EXTRA_NAMES: no country ${code}`);
+}
+
 const countries = raw
   .filter((c) => c.unMember === true || c.independent === true)
   .map((c) => {
     const name = c.name.common;
     const code = c.cca2;
     if (!REGIONS.includes(c.region)) throw new Error(`${code}: unknown region ${c.region}`);
-    // Other names a typed answer may use: the official name and the common
-    // alternatives, but not the two letter code, which would make Expert
-    // a matter of knowing ISO codes.
-    const aliases = [...new Set([c.name.official, ...(c.altSpellings ?? [])])].filter(
-      (a) => typeof a === "string" && a !== name && a.toUpperCase() !== code && a.length <= 60
+    // Other names a typed answer may use: the two letter code, the official
+    // name, the common alternatives, the names in each official language
+    // ("日本", "Deutschland"), and EXTRA_NAMES.
+    const native = Object.values(c.name.native ?? {}).flatMap((n) => [n.common, n.official]);
+    const aliases = [...new Set([code, c.name.official, ...(c.altSpellings ?? []), ...native, ...(EXTRA_NAMES[code] ?? [])])].filter(
+      (a) => typeof a === "string" && a !== name && a.length <= 60
     );
     return { code, name, region: c.region, subregion: c.subregion || c.region, aliases };
   })

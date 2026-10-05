@@ -94,6 +94,23 @@ for (const [text, code] of typed) {
   check(`typed "${text}"`, got === index(code), got >= 0 ? COUNTRIES[got].code : String(got));
 }
 check("a slip as near two countries counts for neither", matchAnswer("austrlia") === -1);
+
+// Every two letter code names its own country, in any case.
+for (const c of COUNTRIES) {
+  const got = matchAnswer(c.code.toLowerCase());
+  check(`code ${c.code}`, got === index(c.code), got >= 0 ? COUNTRIES[got].code : String(got));
+}
+// Abbreviations, short and older forms, and other scripts.
+const more = [
+  ["uae", "AE"], ["PRC", "CN"], ["car", "CF"], ["PNG", "PG"], ["KSA", "SA"], ["ROK", "KR"], ["BiH", "BA"],
+  ["stp", "ST"], ["svg", "VC"], ["czech", "CZ"], ["holy see", "VA"], ["Turkey", "TR"], ["España", "ES"], ["espana", "ES"],
+  ["日本", "JP"], ["中国", "CN"], ["भारत", "IN"], ["Россия", "RU"], ["Ελλάδα", "GR"], ["مصر", "EG"], ["대한민국", "KR"],
+  ["Deutschland", "DE"], ["Nippon", "JP"],
+];
+for (const [text, code] of more) {
+  const got = matchAnswer(text);
+  check(`typed "${text}"`, got === index(code), got >= 0 ? COUNTRIES[got].code : String(got));
+}
 for (const [text, why] of [["iran", "Iraq is one letter away"], ["xx", "nonsense"], ["", "empty"]]) {
   const got = matchAnswer(text);
   if (text === "iran") check(`typed "${text}" is Iran only`, got === index("IR"), why);

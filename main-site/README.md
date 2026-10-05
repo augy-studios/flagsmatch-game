@@ -54,8 +54,12 @@ up to every flag in the region. No flag comes up twice in a game.
 | Expert | No names: type the country | x3 |
 
 Expert forgives case, accents, punctuation, "the", "&" for "and", "St" for
-"Saint", any of a country's usual other names, and a slip of a letter or two,
-as long as the slip is still nearer that country than any other.
+"Saint", and a slip of a letter or two, as long as the slip is still nearer
+that country than any other. Any of a country's names counts: its two letter
+code (`US`), its official name, abbreviations (`UAE`, `PRC`, `KSA`), older
+and short forms (`Burma`, `Turkey`, `Czech`), and its names in its own
+languages in any script (`Deutschland`, `日本`, `भारत`). Names the upstream
+data lacks are added in `EXTRA_NAMES` in `scripts/vendor-flags.mjs`.
 
 **Keys.** 1 to 6 answer; N, or Enter away from a button, skips a flag or
 moves on from an answer. In Expert, Enter answers and Enter on an empty box

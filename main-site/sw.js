@@ -40,7 +40,7 @@
 //    in their own cache, kept across versions, and an install only fetches
 //    the ones it does not already have.
 
-const VERSION = "flagsmatch-v4";
+const VERSION = "flagsmatch-v5";
 const FLAGS_VERSION = "flagsmatch-flags-v1";
 
 const SHELL = `flagsmatch-shell-${VERSION}`;

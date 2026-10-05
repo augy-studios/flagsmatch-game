@@ -60,13 +60,16 @@ export function buildGame(seed) {
    A small slip is forgiven too, if it is still nearer that country than any
    other. */
 
+// Letters in every script are kept, so "日本", "Россия" and "भारत" match
+// their countries; only Latin accents are dropped. Other combining marks
+// stay, since in Devanagari or Arabic they are part of the word.
 export function normaliseName(text) {
   return String(text ?? "")
     .normalize("NFKD")
     .replace(/[̀-ͯ]/g, "")
     .toLowerCase()
     .replace(/&/g, " and ")
-    .replace(/[^a-z0-9]+/g, " ")
+    .replace(/[^\p{L}\p{M}\p{N}]+/gu, " ")
     .trim()
     .replace(/\bsaint\b/g, "st")
     .replace(/^the /, "")
