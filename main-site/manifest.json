@@ -1,7 +1,7 @@
 {
     "name": "Flags Match Game by UwU Apps",
-    "short_name": "Flags Match Game",
-    "description": "A simple flagsmatch app; view live flagsmatch at a glance!",
+    "short_name": "Flags Match",
+    "description": "Name the country from its flag. Harder rounds and quicker answers score more.",
     "icons": [{
             "src": "XFM-192.png",
             "type": "image/png",
@@ -27,8 +27,8 @@
         }
     ],
     "start_url": "/",
-    "theme_color": "#cfc",
-    "background_color": "#cfc",
+    "theme_color": "#ccffcc",
+    "background_color": "#ccffcc",
     "display": "standalone",
     "display_override": ["fullscreen", "minimal-ui", "window-controls-overlay"],
     "orientation": "any",
@@ -37,8 +37,8 @@
     "scope": "/",
     "lang": "en",
     "categories": [
-        "entertainment",
-        "lifestyle",
-        "utilities"
+        "games",
+        "education",
+        "entertainment"
     ]
 }
