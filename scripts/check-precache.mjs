@@ -39,7 +39,7 @@ for (const route of entries) {
 }
 
 const unlisted = [];
-for (const [dir, ext] of [["js", ".js"], ["css", ".css"]]) {
+for (const [dir, ext] of [["js", ".js"], ["js/vendor", ".js"], ["css", ".css"]]) {
   const full = join(ROOT, dir);
   if (!existsSync(full)) continue;
   for (const f of readdirSync(full)) {

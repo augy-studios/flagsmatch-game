@@ -371,6 +371,17 @@ body {
   opacity: 1;
   transform: none;
 }
+/* Expert's pie of the flag's colours, in place of the flag until the answer
+   is in. Chart.js sizes its canvas to this box. */
+.flag-pie {
+  position: relative;
+  width: calc(var(--stage-h) - 20px);
+  height: calc(var(--stage-h) - 20px);
+  max-width: 100%;
+  display: none;
+}
+.flag-stage.colors .flag-pie { display: block; }
+.flag-stage.colors .flag-img { display: none; }
 .card .flag-note {
   position: absolute;
   inset: auto 10px 10px;

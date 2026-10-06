@@ -226,7 +226,7 @@ function syncKeysNote(live = !$("liveActions").classList.contains("hidden")) {
     live && getSettings().show_keys
       ? typed
         ? "Enter answers; Enter on an empty box skips."
-        : "Keys: 1 to 6 answer, N or Enter skips or moves on."
+        : "Keys: 1 to 4 answer, N or Enter skips or moves on."
       : "";
 }
 

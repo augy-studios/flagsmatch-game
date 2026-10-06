@@ -14,13 +14,14 @@ export const REGIONS = [
 ];
 
 // choices: how many names to pick from, 0 for typing the answer.
-// spread: where the wrong answers come from. percent: what every point in
-// the game is multiplied by.
+// spread: where the wrong answers come from. colors: a pie chart of the
+// flag's colours in place of the flag. percent: what every point in the
+// game is multiplied by.
 export const DIFFICULTIES = [
   { id: "E", label: "Easy", choices: 4, spread: "world", percent: 100, about: "Four names, from anywhere in the world." },
   { id: "N", label: "Normal", choices: 4, spread: "region", percent: 150, about: "Four names from the same part of the world." },
-  { id: "H", label: "Hard", choices: 6, spread: "subregion", percent: 225, about: "Six names, from the flag's own neighbours where there are enough." },
-  { id: "X", label: "Expert", choices: 0, spread: null, percent: 300, about: "No names to pick from: type the country." },
+  { id: "H", label: "Hard", choices: 0, spread: null, percent: 300, about: "No names to pick from: type the country." },
+  { id: "X", label: "Expert", choices: 0, spread: null, colors: true, percent: 400, about: "No flag, only a pie chart of its colours: type the country." },
 ];
 
 export const COUNT_PRESETS = [5, 10, 15, 20];

@@ -40,7 +40,7 @@
 //    in their own cache, kept across versions, and an install only fetches
 //    the ones it does not already have.
 
-const VERSION = "flagsmatch-v5";
+const VERSION = "flagsmatch-v6";
 const FLAGS_VERSION = "flagsmatch-flags-v1";
 
 const SHELL = `flagsmatch-shell-${VERSION}`;
@@ -65,6 +65,7 @@ const PRECACHE = [
 
   "/js/app.js",
   "/js/api.js",
+  "/js/colors.js",
   "/js/countries.js",
   "/js/game.js",
   "/js/icons.js",
@@ -83,6 +84,7 @@ const PRECACHE = [
   "/js/ui.js",
   "/js/update-bar.js",
   "/js/view.js",
+  "/js/vendor/chart.umd.min.js",
 
   "/manifest.json",
   "/favicon.ico",

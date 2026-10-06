@@ -10,7 +10,7 @@
 //                shrinking evenly to none at 15 s
 //   streak       +10% for each right answer in a row before it, up to +50%
 //   progress     +0% on the first flag, rising evenly to +100% on the last
-//   difficulty   x1 Easy, x1.5 Normal, x2.25 Hard, x3 Expert
+//   difficulty   x1 Easy, x1.5 Normal, x3 Hard, x4 Expert
 //   the game     10 x right answers x accuracy, times the difficulty
 
 import { isCorrect } from "./quiz.js";

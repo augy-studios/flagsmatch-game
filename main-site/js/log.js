@@ -3,7 +3,7 @@
 // checked and scored, and is stored as the record of the game. Pure.
 //
 // An entry is { pick, ms }: pick is the option's place for multiple choice,
-// the text typed for Expert, or one of the constants below; ms is how long
+// the text typed for Hard and Expert, or one of the constants below; ms is how long
 // it took, to the nearest 10 ms.
 
 import { MS_MAX, MS_STEP, TYPED_MAX } from "./rules.js";

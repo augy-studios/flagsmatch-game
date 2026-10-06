@@ -36,16 +36,18 @@ function distractors(answer, spread, need, rand) {
   return order.slice(0, need);
 }
 
-// { seed, difficulty, questions: [{ answer, options }] }. answer is an index
-// into COUNTRIES; options are indices too, with the answer among them, or
-// null when the answer is typed. No flag comes up twice in a game.
+// { seed, difficulty, questions: [{ answer, options, colors }] }. answer is
+// an index into COUNTRIES; options are indices too, with the answer among
+// them, or null when the answer is typed. colors is true when the question
+// shows the flag's colours rather than the flag. No flag comes up twice in
+// a game.
 export function buildGame(seed) {
   const difficulty = difficultyById(seed.difficulty);
   const rand = randomSource(hashString(`flags|${seed.text}`));
   const answers = shuffled(regionPool(seed.region), rand).slice(0, seed.count);
 
   const questions = answers.map((answer) => {
-    if (!difficulty.choices) return { answer, options: null };
+    if (!difficulty.choices) return { answer, options: null, colors: difficulty.colors === true };
     const options = distractors(answer, difficulty.spread, difficulty.choices - 1, rand);
     options.splice(below(rand, difficulty.choices), 0, answer);
     return { answer, options };

@@ -75,3 +75,7 @@ downloads every flag into `main-site/flags/` from
 its header first, since the order of the list is part of every seed. The
 original game fetched both live from restcountries.com, whose v3.1 API has
 since been retired, which is what broke it.
+
+`node scripts/vendor-colors.mjs` measures each flag in `main-site/flags/`
+into `main-site/js/colors.js`, the colours and shares Expert's pie charts
+draw. Rerun it whenever a flag changes; its header says what it needs.

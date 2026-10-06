@@ -1,8 +1,10 @@
-// The question on screen: the flag, the names to pick from or the box to
-// type in, and the line saying how an answer went. Playing alone, playing
-// with others and watching a replay all draw through here, so a flag looks
-// the same in each.
+// The question on screen: the flag (or in Expert, a pie of its colours),
+// the names to pick from or the box to type in, and the line saying how an
+// answer went. Playing alone, playing with others and watching a replay all
+// draw through here, so a flag looks the same in each.
 
+import { COUNTRIES } from "./countries.js";
+import { FLAG_COLORS } from "./colors.js";
 import { flagUrl, countryName, matchAnswer, isCorrect } from "./quiz.js";
 import { NONE, SKIP, TIMEOUT, isAnswer } from "./log.js";
 import { escapeHtml } from "./ui.js";
@@ -56,21 +58,101 @@ export function pick(value) {
   pickHandler?.(value);
 }
 
-// Draws `question` and resolves once its flag is on screen, or failed to
-// load, which is when an answer's clock starts. Answering stays off until
-// then unless `interactive` is false anyway.
+/* ---- Expert's pie chart ----
+   Chart.js, vendored and precached like everything else, so Expert plays
+   offline. It is a classic script, loaded on the first pie rather than with
+   the page, since only Expert needs it. Hovering or touching a slice shows
+   its percentage. */
+
+const CHART_SRC = "/js/vendor/chart.umd.min.js";
+let chartLib = null;
+let pie = null;
+
+function loadChart() {
+  if (!chartLib) {
+    chartLib = new Promise((resolve, reject) => {
+      if (window.Chart) return resolve(window.Chart);
+      const script = document.createElement("script");
+      script.src = CHART_SRC;
+      script.onload = () => (window.Chart ? resolve(window.Chart) : reject(new Error("no Chart")));
+      script.onerror = () => reject(new Error("Chart.js did not load"));
+      document.head.append(script);
+    });
+    // A failure is not kept, so the next pie tries again.
+    chartLib.catch(() => (chartLib = null));
+  }
+  return chartLib;
+}
+
+async function drawColors(index) {
+  const Chart = await loadChart();
+  const colors = FLAG_COLORS[COUNTRIES[index].code] ?? [];
+  // Read each time, so a theme changed mid game is followed. The edge lets
+  // a white slice read against a pale card.
+  const edge = getComputedStyle(document.documentElement).getPropertyValue("--ink").trim() || "#121815";
+  const data = {
+    labels: colors.map(() => ""),
+    datasets: [
+      {
+        data: colors.map(([, percent]) => percent),
+        backgroundColor: colors.map(([hex]) => hex),
+        borderColor: edge,
+        borderWidth: 1,
+        hoverOffset: 10,
+      },
+    ],
+  };
+  const canvas = $("flagPie");
+  // Named for what it is, never for whose it is.
+  canvas.setAttribute(
+    "aria-label",
+    `A pie chart of the flag's colours, ${colors.length} slices: ${colors.map(([, p]) => `${p}%`).join(", ")}.`
+  );
+  if (pie) {
+    pie.data = data;
+    pie.update();
+    return;
+  }
+  pie = new Chart(canvas, {
+    type: "pie",
+    data,
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      // Drawn at once, so the clock starts on a whole pie.
+      animation: { duration: 0 },
+      transitions: { active: { animation: { duration: 150 } } },
+      layout: { padding: 12 },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            title: () => "",
+            label: (ctx) => ` ${ctx.parsed}%`,
+          },
+        },
+      },
+    },
+  });
+}
+
+// Draws `question` and resolves once its flag, or the pie of its colours,
+// is on screen, or failed to load, which is when an answer's clock starts.
+// Answering stays off until then unless `interactive` is false anyway.
 export function showQuestion(question, { interactive = true, prompt, showKeys = true } = {}) {
   const token = ++shown;
-  const img = $("flagImg");
   const stage = $("flagStage");
-  const same = onScreen === question.answer;
 
   $("prompt").textContent =
-    prompt ?? (question.options ? "Which country's flag is this?" : "Which country's flag is this? Type its name.");
+    prompt ??
+    (question.options
+      ? "Which country's flag is this?"
+      : question.colors
+        ? "Whose flag has these colours? Type the country."
+        : "Which country's flag is this? Type its name.");
   setFeedback("");
   $("flagNote").textContent = "";
-  // Named for what it is, never for whose it is.
-  img.alt = "The flag to name";
+  stage.classList.toggle("colors", question.colors === true);
 
   const options = $("options");
   const typed = $("typedForm");
@@ -102,34 +184,66 @@ export function showQuestion(question, { interactive = true, prompt, showKeys = 
     const done = (ok) => {
       if (token !== shown) return;
       stage.classList.add("loaded");
-      if (!ok) $("flagNote").textContent = "This flag did not load. Skip it, or answer anyway.";
+      if (!ok) {
+        $("flagNote").textContent = question.colors
+          ? "The colours did not load. Skip it, or answer anyway."
+          : "This flag did not load. Skip it, or answer anyway.";
+      }
       if (interactive) setInteractive(true);
       resolve(ok);
     };
-    img.onload = () => done(true);
-    img.onerror = () => done(false);
-    // The same flag again (a replay stepping back and forth): it is there.
-    if (same && img.complete && img.naturalWidth > 0) {
-      queueMicrotask(() => done(true));
+    if (question.colors) {
+      drawColors(question.answer).then(
+        () => done(true),
+        () => done(false)
+      );
       return;
     }
-    // A different flag: the old one goes while the new one is fetched.
-    stage.classList.remove("loaded");
-    flagBlob(question.answer).then(
-      (url) => {
-        if (token !== shown) return;
-        onScreen = question.answer;
-        // Setting the same URL again fires no load event.
-        if (img.src === url && img.complete) done(img.naturalWidth > 0);
-        else img.src = url;
-      },
-      () => {
-        if (token !== shown) return;
-        onScreen = -1;
-        img.removeAttribute("src");
-        done(false);
-      }
-    );
+    drawFlag(question.answer, token, done);
+  });
+}
+
+// Puts flag `index` in the image, then calls done(ok), unless another
+// question has been drawn by then.
+function drawFlag(index, token, done) {
+  const img = $("flagImg");
+  const stage = $("flagStage");
+  const same = onScreen === index;
+  // Named for what it is, never for whose it is.
+  img.alt = "The flag to name";
+  img.onload = () => done(true);
+  img.onerror = () => done(false);
+  // The same flag again (a replay stepping back and forth): it is there.
+  if (same && img.complete && img.naturalWidth > 0) {
+    queueMicrotask(() => done(true));
+    return;
+  }
+  // A different flag: the old one goes while the new one is fetched.
+  stage.classList.remove("loaded");
+  flagBlob(index).then(
+    (url) => {
+      if (token !== shown) return;
+      onScreen = index;
+      // Setting the same URL again fires no load event.
+      if (img.src === url && img.complete) done(img.naturalWidth > 0);
+      else img.src = url;
+    },
+    () => {
+      if (token !== shown) return;
+      onScreen = -1;
+      img.removeAttribute("src");
+      done(false);
+    }
+  );
+}
+
+// Once an Expert answer is in, the flag those colours came from.
+function revealFlag(index) {
+  const token = shown;
+  const stage = $("flagStage");
+  stage.classList.remove("colors");
+  drawFlag(index, token, () => {
+    if (token === shown) stage.classList.add("loaded");
   });
 }
 
@@ -181,6 +295,7 @@ export function showResult(question, value, { say = true } = {}) {
     input.classList.toggle("right", right);
     input.classList.toggle("wrong", typeof value === "string" && !right);
   }
+  if (question.colors) revealFlag(question.answer);
 
   if (typeof say === "string") {
     setFeedback(say, right ? "ok" : value === NONE ? "" : "bad");

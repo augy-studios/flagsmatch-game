@@ -5,6 +5,7 @@
 // Run: node scripts/test-quiz.mjs
 
 import { COUNTRIES } from "../main-site/js/countries.js";
+import { FLAG_COLORS } from "../main-site/js/colors.js";
 import { REGIONS, DIFFICULTIES, maxCount, MS_MAX } from "../main-site/js/rules.js";
 import { newSeed, parseSeed, seedFromText, buildSeed } from "../main-site/js/seed.js";
 import { buildGame, matchAnswer, isCorrect, normaliseName } from "../main-site/js/quiz.js";
@@ -64,6 +65,7 @@ for (const d of DIFFICULTIES) {
     for (const q of g.questions) {
       if (!d.choices) {
         check(`${seed.text} typed has no options`, q.options === null);
+        check(`${seed.text} colours only in Expert`, q.colors === (d.id === "X"));
         continue;
       }
       check(`${seed.text} option count`, q.options.length === d.choices);
@@ -124,8 +126,8 @@ check("Sudan is not South Sudan", matchAnswer("sudan") !== matchAnswer("south su
 check("Mali is not Malawi", matchAnswer("mali") !== matchAnswer("malawi"));
 
 /* ---- logs ---- */
-const choice = buildGame(buildSeed("W", "H", 6, "BCDFGHJK"));
-const entries = [entry(0, 1234), entry(5, 999999), entry(SKIP, 3000), entry(TIMEOUT, 15000), entry(NONE, 0), entry(3, 351)];
+const choice = buildGame(buildSeed("W", "N", 6, "BCDFGHJK"));
+const entries = [entry(0, 1234), entry(2, 999999), entry(SKIP, 3000), entry(TIMEOUT, 15000), entry(NONE, 0), entry(3, 351)];
 const packed = packLog(entries);
 const back = unpackLog(packed, choice);
 check("log round trips", JSON.stringify(back) === JSON.stringify(entries.map((e) => ({ ...e }))), JSON.stringify(back));
@@ -133,7 +135,7 @@ check("ms capped", back?.[1].ms === MS_MAX);
 check("short log refused", unpackLog(packLog(entries.slice(0, 5)), choice) === null);
 check("short log fine when partial", unpackLog(packLog(entries.slice(0, 5)), choice, { partial: true })?.length === 5);
 check("long log refused", unpackLog(packLog([...entries, entry(0, 500)]), choice) === null);
-check("option past the choices refused", unpackLog(packLog(entries.map((e, i) => (i ? e : entry(5, 500)))), buildGame(buildSeed("W", "N", 6, "BCDFGHJK"))) === null);
+check("option past the choices refused", unpackLog(packLog(entries.map((e, i) => (i ? e : entry(4, 500)))), choice) === null);
 check("typed in a choice game refused", unpackLog(packLog(entries.map((e, i) => (i ? e : entry("France", 900)))), choice) === null);
 check("junk refused", unpackLog("!!", choice) === null && unpackLog("", choice) === null && unpackLog(null, choice) === null);
 
@@ -164,9 +166,23 @@ check("turns: half the flags are mine", t.mine === 10 && t.correct === 10);
 check("turns: streak runs across others' flags", t.turns[18].streak === 10);
 const longer = scoreLog(buildGame(buildSeed("W", "E", 40, "BCDFGHJK")), buildGame(buildSeed("W", "E", 40, "BCDFGHJK")).questions.map((q) => entry(q.options.indexOf(q.answer), 1500)));
 check("a longer game scores more", longer.score > s.score * 1.9, `${longer.score} vs ${s.score}`);
-const hard = buildGame(buildSeed("W", "H", 20, "BCDFGHJK"));
-const hardScore = scoreLog(hard, hard.questions.map((q) => entry(q.options.indexOf(q.answer), 1500))).score;
-check("harder scores more", hardScore === Math.floor(s.score * 2.25) || Math.abs(hardScore - s.score * 2.25) < 25, `${hardScore} vs ${s.score}`);
+for (const [id, times] of [["H", 3], ["X", 4]]) {
+  const harder = buildGame(buildSeed("W", id, 20, "BCDFGHJK"));
+  const harderScore = scoreLog(harder, harder.questions.map((q) => entry(COUNTRIES[q.answer].name, 1500))).score;
+  check(`${id} scores x${times}`, Math.abs(harderScore - s.score * times) < 25, `${harderScore} vs ${s.score}`);
+}
+
+/* ---- Expert's colours ---- */
+for (const c of COUNTRIES) {
+  const colors = FLAG_COLORS[c.code];
+  if (!colors?.length) {
+    check(`${c.code} has colours`, false);
+    continue;
+  }
+  const sum = colors.reduce((n, [, p]) => n + p, 0);
+  check(`${c.code} colours add up to 100`, Math.abs(sum - 100) < 0.05, String(sum));
+  check(`${c.code} colours are hex`, colors.every(([hex, p]) => /^#[0-9A-F]{6}$/.test(hex) && p > 0));
+}
 
 if (failed) {
   console.error(`\n${failed} check(s) failed.`);
