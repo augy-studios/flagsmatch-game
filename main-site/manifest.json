@@ -1,7 +1,7 @@
 {
     "name": "Flags Match Game by UwU Apps",
     "short_name": "Flags Match",
-    "description": "Name the country from its flag. Harder rounds and quicker answers score more.",
+    "description": "Name the country from its flag, or from a pie chart of its colours. Play solo or with friends.",
     "icons": [{
             "src": "XFM-192.png",
             "type": "image/png",
