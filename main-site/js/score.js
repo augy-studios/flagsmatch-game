@@ -11,6 +11,8 @@
 //   streak       +10% for each right answer in a row before it, up to +50%
 //   progress     +0% on the first flag, rising evenly to +100% on the last
 //   difficulty   x1 Easy, x1.5 Normal, x3 Hard, x4 Expert
+//   help         Expert only: -15% of the flag for each wrong guess before
+//                it, -25% for each hint, never below 10%
 //   the game     10 x right answers x accuracy, times the difficulty
 
 import { isCorrect } from "./quiz.js";
@@ -23,6 +25,14 @@ const SPEED_NONE_MS = 15000;
 const STREAK_STEP = 10;
 const STREAK_CAP = 5;
 const GAME_BONUS = 10;
+export const MISS_COST = 15;
+export const HINT_COST = 25;
+export const HELP_FLOOR = 10;
+
+// The share of a flag's points, in percent, left after this much help.
+export function helpPercent({ misses = 0, hints = 0 } = {}) {
+  return Math.max(HELP_FLOOR, 100 - misses * MISS_COST - hints * HINT_COST);
+}
 
 export function speedBonus(ms) {
   if (ms <= SPEED_FULL_MS) return SPEED_MAX;
@@ -62,7 +72,7 @@ export function scoreLog(game, entries, { done = entries.length === game.questio
     const right = isAnswer(e.pick) && isCorrect(game.questions[index], e.pick);
     let points = 0;
     if (right) {
-      points = flagPoints({ ms: e.ms, streak, index, count, percent });
+      points = Math.floor((flagPoints({ ms: e.ms, streak, index, count, percent }) * helpPercent(e)) / 100);
       streak++;
       correct++;
       total += points;

@@ -18,7 +18,12 @@
 // Messages, beyond the spec's hello, state, bye and full:
 //
 //   { type: "hello", v, id, name }               guest to host; id is per tab
-//   { type: "answer", round, turn, pick, ms }    guest to host
+//   { type: "answer", round, turn, pick, ms, misses, hints }
+//                                                guest to host; misses and
+//                                                hints are Expert's help,
+//                                                each device checking its
+//                                                own guesses until one is
+//                                                right or it skips
 //   { type: "ping" }                             guest to host, the heartbeat
 //   { type: "started" }                          host to guest: no new seats now
 //   { type: "old", v }                           host to guest: different build
@@ -274,7 +279,7 @@ function onHostMessage(message, from) {
     case "answer": {
       if (!p || message.round !== room.round || message.turn !== room.turn) return;
       const seat = room.players.indexOf(p);
-      applyAnswer(seat, message.pick, message.ms);
+      applyAnswer(seat, message.pick, message.ms, { misses: message.misses, hints: message.hints });
       return;
     }
     case "bye":
@@ -360,7 +365,7 @@ function mayAnswer(seat) {
   return room.format !== "turns" || seat === activeSeat();
 }
 
-function applyAnswer(seat, pick, ms) {
+function applyAnswer(seat, pick, ms, help) {
   if (!room || !mayAnswer(seat)) return;
   const q = room.game.questions[room.turn];
   if (pick !== SKIP) {
@@ -368,7 +373,8 @@ function applyAnswer(seat, pick, ms) {
     if (!q.options && (typeof pick !== "string" || !cleanTyped(pick))) return;
   }
   if (!Number.isFinite(ms) || ms < 0) return;
-  const e = entry(pick, Math.min(ms, TURN_LIMIT_MS));
+  // entry() caps and cleans the counts; only Expert keeps them.
+  const e = entry(pick, Math.min(ms, TURN_LIMIT_MS), q.retries ? help : undefined);
   room.players[seat].entries[room.turn] = e;
 
   if (room.format === "duel" && isAnswer(e.pick) && isCorrect(q, e.pick)) {
@@ -705,7 +711,7 @@ function leaveGuest() {
 
 // What this device has on screen, so a snapshot 20 times a second only
 // redraws what changed.
-const drawn = { round: -1, phase: "", turn: -1, revealed: "", resultRound: -1, strip: "", shownAt: null, pending: null, live: null };
+const drawn = { round: -1, phase: "", turn: -1, revealed: "", resultRound: -1, strip: "", shownAt: null, pending: null, live: null, tries: game.newTries(), line: null };
 
 function localGame() {
   if (role === "host") return room?.game ? { seed: room.seed, game: room.game, round: room.round } : null;
@@ -770,6 +776,8 @@ function render(s) {
       drawn.pending = null;
       drawn.shownAt = null;
       drawn.live = null;
+      drawn.tries = game.newTries();
+      drawn.line = null;
       const key = `${s.round}:${s.turn}`;
       view.showQuestion(q, { interactive: false, showKeys: getSettings().show_keys }).then(() => {
         if (`${drawn.round}:${drawn.turn}` === key && drawn.phase === "question") {
@@ -782,7 +790,13 @@ function render(s) {
     }
     drawn.phase = s.phase;
     syncLive(s);
-    view.setFeedback(questionLine(s));
+    // Only when it changes, so Expert's word on a wrong guess or a hint
+    // stays up between snapshots.
+    const line = questionLine(s);
+    if (line !== drawn.line) {
+      drawn.line = line;
+      view.setFeedback(line);
+    }
     return;
   }
 
@@ -793,7 +807,7 @@ function render(s) {
     drawn.phase = "reveal";
     drawn.live = false;
     const e = mine[s.turn];
-    view.showResult(q, e ? e.pick : NONE, { say: revealLine(s, q, e) });
+    view.showResult(q, e ? e.pick : NONE, { say: revealLine(s, q, e), help: e });
   }
 }
 
@@ -882,15 +896,23 @@ function renderStrip(s) {
 function onLocalPick(value) {
   const s = lastFor();
   if (!canAnswer(s)) return;
+  const q = localGame().game.questions[s.turn];
+  if (!game.guessIsFinal(drawn.tries, q, value)) return;
   const ms = performance.now() - drawn.shownAt;
+  const { misses, hints } = drawn.tries;
   drawn.pending = value;
   drawn.live = false;
   view.setInteractive(false);
   $("skipBtn").disabled = true;
   view.markPending(value);
   view.setFeedback("Sent.");
-  if (role === "host") applyAnswer(0, value, ms);
-  else guest?.send({ type: "answer", round: s.round, turn: s.turn, pick: value, ms: Math.round(ms) });
+  if (role === "host") applyAnswer(0, value, ms, { misses, hints });
+  else guest?.send({ type: "answer", round: s.round, turn: s.turn, pick: value, ms: Math.round(ms), misses, hints });
+}
+
+function onLocalHint() {
+  const s = lastFor();
+  if (canAnswer(s)) game.takeHint(drawn.tries, localGame().game.questions[s.turn]);
 }
 
 function showOver(s, g) {
@@ -1029,6 +1051,7 @@ const adapter = {
     startGame();
   },
   skip: () => onLocalPick(SKIP),
+  hint: onLocalHint,
 };
 
 export function initMultiplayer({ joinCode } = {}) {

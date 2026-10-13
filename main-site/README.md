@@ -53,13 +53,21 @@ up to every flag in the region. No flag comes up twice in a game.
 | Easy | 4 names, from anywhere | x1 |
 | Normal | 4 names from the flag's own region | x1.5 |
 | Hard | No names: type the country | x3 |
-| Expert | No flag either: type the country from a pie chart of its flag's colours | x4 |
+| Expert | No flag either: type the country from a pie chart of its flag's colours, guessing as often as you like, with hints | x4 |
 
 Expert's pie shows each colour's share of the flag; hovering or touching a
 slice gives its percentage. The shares are measured from the game's own
 flags by `scripts/vendor-colors.mjs` into `js/colors.js`, and the chart is
 Chart.js (MIT), vendored at `js/vendor/chart.umd.min.js` so Expert plays
 offline. Once the answer is in, the flag itself is shown.
+
+Expert also leaves each flag open until it is answered or skipped: a wrong
+guess clears the box for another, as many as the player likes, and Hint gives
+up to three hints, one at a time: the flag's subregion, the shape of its name
+(`M _ _ _ _ _`), then every other letter (`M _ l _ w _`). Each wrong guess
+takes 15% off what the flag is worth and each hint 25%, never below 10%, so a
+right answer always earns something. A guess that names no country, or one
+already tried, costs nothing.
 
 Hard and Expert forgive case, accents, punctuation, "the", "&" for "and",
 "St" for "Saint", and a slip of a letter or two, as long as the slip is still nearer
@@ -88,6 +96,7 @@ A game on a pasted seed is not scored, since its answers could have been seen.
 | Streak | +10% for each right answer in a row before it, up to +50% |
 | Progress | +0% on the first flag, rising evenly to +100% on the last |
 | Difficulty | x1, x1.5, x3 or x4, as above |
+| Help (Expert) | -15% of the flag for each wrong guess, -25% for each hint, never below 10% |
 | Finishing | 10 x right answers x accuracy, times the difficulty |
 
 So a game scores more the harder it is, the longer it is, the further into it
@@ -121,7 +130,11 @@ its seat back.
 | --- | --- | --- |
 | Race | 2 to 8 | Everyone answers every flag. The next comes once all have answered or its 15 seconds are up. |
 | Take turns | 2 to 8 | The flags go round, one player at a time, 15 seconds each. |
-| Head to head | 2 | The first right answer takes the flag; a wrong answer is out for that flag. |
+| Head to head | 2 | The first right answer takes the flag; a wrong answer is out for that flag, except in Expert, where it only costs points. |
+
+In Expert, guesses and hints work as alone, within each flag's 15 seconds.
+Each device checks its own guesses and sends the host the right one, or a
+skip, with how many wrong guesses and hints it took.
 
 The host picks the settings. Each player's own answers are their own game:
 their replay, their link, and their own leaderboard entry under their own
@@ -141,7 +154,8 @@ and refuses (`implausible`, reason kept in the logs) a log that:
 
 - does not match the seed's game, flag for flag;
 - has an answer quicker than 350 ms, or a typed one quicker than 250 ms plus
-  40 ms a character;
+  40 ms a character, plus 330 ms for each of Expert's wrong guesses before
+  it;
 - spends longer answering than the server saw pass since the ticket;
 - has answers in the wrong places for the way it was played: another
   player's turn answered, or a time limit in a game alone.

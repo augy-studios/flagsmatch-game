@@ -5,8 +5,10 @@
 
 import { COUNTRIES } from "./countries.js";
 import { FLAG_COLORS } from "./colors.js";
-import { flagUrl, countryName, matchAnswer, isCorrect } from "./quiz.js";
+import { flagUrl, countryName, matchAnswer, isCorrect, hintsFor } from "./quiz.js";
 import { NONE, SKIP, TIMEOUT, isAnswer } from "./log.js";
+import { HINT_MAX } from "./rules.js";
+import { helpPercent } from "./score.js";
 import { escapeHtml } from "./ui.js";
 
 const $ = (id) => document.getElementById(id);
@@ -148,11 +150,15 @@ export function showQuestion(question, { interactive = true, prompt, showKeys = 
     (question.options
       ? "Which country's flag is this?"
       : question.colors
-        ? "Whose flag has these colours? Type the country."
+        ? question.retries
+          ? "Whose flag has these colours? Type the country, as often as you like."
+          : "Whose flag has these colours? Type the country."
         : "Which country's flag is this? Type its name.");
   setFeedback("");
   $("flagNote").textContent = "";
   stage.classList.toggle("colors", question.colors === true);
+  showHints(question, 0);
+  $("hintBtn").classList.toggle("hidden", !question.retries);
 
   const options = $("options");
   const typed = $("typedForm");
@@ -255,7 +261,48 @@ export function setInteractive(on) {
     });
   $("typedInput").disabled = !on;
   $("typedBtn").disabled = !on;
+  $("hintBtn").disabled = !on || hintsShown >= HINT_MAX;
   if (on && !$("typedForm").classList.contains("hidden")) $("typedInput").focus({ preventScroll: true });
+}
+
+/* ---- Expert's retries and hints ---- */
+
+let hintsShown = 0;
+
+// The first `n` of the question's hints, under the answer box, and the
+// hint button saying what is left.
+export function showHints(question, n) {
+  hintsShown = n;
+  const list = $("hints");
+  list.innerHTML = hintsFor(question, n)
+    .map((text, i) => `<li><span class="${i ? "hint-name" : ""}">${escapeHtml(text)}</span></li>`)
+    .join("");
+  list.classList.toggle("hidden", n === 0);
+  $("hintLabel").textContent = n >= HINT_MAX ? "No more hints" : `Hint ${n + 1} of ${HINT_MAX}`;
+  if (n >= HINT_MAX) $("hintBtn").disabled = true;
+}
+
+const worthLine = (help) => `This flag is now worth ${helpPercent(help)}% of its points.`;
+
+// A hint just given: shown, and what it cost.
+export function hintTaken(question, help) {
+  showHints(question, help.hints);
+  setFeedback(`Hint ${help.hints}. ${worthLine(help)}`);
+  $("typedInput").focus({ preventScroll: true });
+}
+
+// A guess that did not get it, with the flag left open for another.
+// `help` is the wrong guesses and hints so far, counting this one.
+export function guessMissed(text, { verdict, named }, help) {
+  const input = $("typedInput");
+  input.value = "";
+  input.classList.remove("shake");
+  void input.offsetWidth;
+  input.classList.add("shake");
+  input.focus({ preventScroll: true });
+  if (verdict === "unknown") setFeedback(`"${text}" is not a country this knows. Try again; that one is free.`, "bad");
+  else if (verdict === "again") setFeedback(`You already tried ${countryName(named)}. Try another; that one is free.`, "bad");
+  else setFeedback(`Not ${countryName(named)}. ${worthLine(help)}`, "bad");
 }
 
 // An answer sent and not yet confirmed, in a game with others.
@@ -271,8 +318,9 @@ export function setFeedback(text, tone = "") {
 
 // Marks how `value` answered `question`: the right name ringed, a wrong
 // pick crossed. Says so in the feedback line unless `say` is false, or
-// says `say` when it is a string. Returns whether it was right.
-export function showResult(question, value, { say = true } = {}) {
+// says `say` when it is a string. `help` is Expert's { misses, hints }
+// before the answer. Returns whether it was right.
+export function showResult(question, value, { say = true, help = null } = {}) {
   const answer = countryName(question.answer);
   const right = isAnswer(value) && isCorrect(question, value);
 
@@ -296,13 +344,24 @@ export function showResult(question, value, { say = true } = {}) {
     input.classList.toggle("wrong", typeof value === "string" && !right);
   }
   if (question.colors) revealFlag(question.answer);
+  $("hintBtn").disabled = true;
+  if (question.retries) showHints(question, help?.hints ?? 0);
 
   if (typeof say === "string") {
     setFeedback(say, right ? "ok" : value === NONE ? "" : "bad");
   } else if (say) {
-    setFeedback(describe(question, value, right, answer), right ? "ok" : "bad");
+    setFeedback(describe(question, value, right, answer) + helpLine(help, right), right ? "ok" : "bad");
   }
   return right;
+}
+
+// After Expert's answer line: the help it took, and what that left.
+function helpLine(help, right) {
+  const parts = [];
+  if (help?.misses) parts.push(`${help.misses} wrong guess${help.misses === 1 ? "" : "es"}`);
+  if (help?.hints) parts.push(`${help.hints} hint${help.hints === 1 ? "" : "s"}`);
+  if (!parts.length) return "";
+  return ` ${parts.join(" and ")}${right ? `, so ${helpPercent(help)}% of the points` : ""}.`;
 }
 
 function describe(question, value, right, answer) {

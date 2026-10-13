@@ -15,14 +15,31 @@ export const REGIONS = [
 
 // choices: how many names to pick from, 0 for typing the answer.
 // spread: where the wrong answers come from. colors: a pie chart of the
-// flag's colours in place of the flag. percent: what every point in the
-// game is multiplied by.
+// flag's colours in place of the flag. retries: a wrong guess leaves the
+// flag open, and hints can be asked for, each costing some of its points.
+// percent: what every point in the game is multiplied by.
 export const DIFFICULTIES = [
   { id: "E", label: "Easy", choices: 4, spread: "world", percent: 100, about: "Four names, from anywhere in the world." },
   { id: "N", label: "Normal", choices: 4, spread: "region", percent: 150, about: "Four names from the same part of the world." },
   { id: "H", label: "Hard", choices: 0, spread: null, percent: 300, about: "No names to pick from: type the country." },
-  { id: "X", label: "Expert", choices: 0, spread: null, colors: true, percent: 400, about: "No flag, only a pie chart of its colours: type the country." },
+  {
+    id: "X",
+    label: "Expert",
+    choices: 0,
+    spread: null,
+    colors: true,
+    retries: true,
+    percent: 400,
+    about: "No flag, only a pie chart of its colours: type the country. Guess as often as you like and ask for hints, but each one costs points.",
+  },
 ];
+
+// The hints a flag has to give, in Expert: where it is, the shape of its
+// name, then half its letters.
+export const HINT_MAX = 3;
+// A packed log keeps a flag's wrong guesses in one byte. Past this the flag
+// is long since down to its floor, so more are not counted.
+export const MISS_MAX = 255;
 
 export const COUNT_PRESETS = [5, 10, 15, 20];
 
@@ -54,6 +71,9 @@ export const MS_MAX = 65535 * MS_STEP;
 export const MIN_ANSWER_MS = 350;
 export const MIN_TYPED_MS = 250;
 export const MS_PER_TYPED_CHAR = 40;
+// The shortest name is two characters, so a wrong guess in Expert took at
+// least this long to type.
+export const MIN_MISS_MS = MIN_TYPED_MS + 2 * MS_PER_TYPED_CHAR;
 // A typed answer's length cap, in characters.
 export const TYPED_MAX = 32;
 // How long a flag lasts in a game with other people. Alone there is no limit.

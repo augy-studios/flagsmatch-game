@@ -9,12 +9,13 @@ import {
   COUNT_PRESETS,
   MODE_LABELS,
   FEEDBACK_MS,
+  HINT_MAX,
   maxCount,
   regionById,
   difficultyById,
 } from "./rules.js";
 import { newSeed, parseSeed, buildSeed, seedFromText } from "./seed.js";
-import { buildGame } from "./quiz.js";
+import { buildGame, judgeGuess } from "./quiz.js";
 import { entry, packLog, unpackLog, SKIP } from "./log.js";
 import { scoreLog } from "./score.js";
 import { api } from "./api.js";
@@ -212,6 +213,8 @@ export function enterPlay({ seedText, live = true, others = false }) {
   $("liveActions").classList.toggle("hidden", !live);
   $("skipBtn").classList.remove("hidden");
   $("skipBtn").disabled = false;
+  // Shown by each question that has hints to give.
+  $("hintBtn").classList.add("hidden");
   $("mpStrip").classList.toggle("hidden", !others);
   $("turnTimer").classList.add("hidden");
   $("netBar").classList.add("hidden");
@@ -228,6 +231,32 @@ function syncKeysNote(live = !$("liveActions").classList.contains("hidden")) {
         ? "Enter answers; Enter on an empty box skips."
         : "Keys: 1 to 4 answer, N or Enter skips or moves on."
       : "";
+}
+
+/* ---- Expert's retries and hints ----
+   For playing alone and with others alike. `tries` is one flag's
+   { tried, misses, hints }: the countries guessed, and the help so far. */
+
+export const newTries = () => ({ tried: new Set(), misses: 0, hints: 0 });
+
+// Whether `value` ends the flag. A typed guess that misses a question with
+// retries leaves it open, and says so; everything else is final.
+export function guessIsFinal(tries, question, value) {
+  if (!question.retries || typeof value !== "string") return true;
+  const judged = judgeGuess(question, value, tries.tried);
+  if (judged.verdict === "right") return true;
+  if (judged.verdict === "wrong") {
+    tries.tried.add(judged.named);
+    tries.misses++;
+  }
+  view.guessMissed(value, judged, tries);
+  return false;
+}
+
+export function takeHint(tries, question) {
+  if (!question.retries || tries.hints >= HINT_MAX) return;
+  tries.hints++;
+  view.hintTaken(question, tries);
 }
 
 /* ---- playing alone ---- */
@@ -304,6 +333,7 @@ function showSoloTurn(i) {
   g.turn = i;
   g.phase = "question";
   g.shownAt = null;
+  g.tries = newTries();
   scoreHud(g.game, g.entries, i);
   const q = g.game.questions[i];
   view.showQuestion(q, { showKeys: getSettings().show_keys }).then(() => {
@@ -319,10 +349,13 @@ function showSoloTurn(i) {
 function onSoloPick(value) {
   const g = solo;
   if (!g || g.phase !== "question" || g.shownAt === null) return;
+  const q = g.game.questions[g.turn];
+  if (!guessIsFinal(g.tries, q, value)) return;
   const ms = performance.now() - g.shownAt;
-  g.entries.push(entry(value, ms));
+  const e = entry(value, ms, g.tries);
+  g.entries.push(e);
   g.phase = "feedback";
-  view.showResult(g.game.questions[g.turn], g.entries[g.turn].pick);
+  view.showResult(q, e.pick, { help: e });
   scoreHud(g.game, g.entries, g.turn);
   g.timer = setTimeout(() => advanceSolo(g), FEEDBACK_MS);
 }
@@ -689,6 +722,10 @@ export function initGame({ replayLink: link } = {}) {
     if (solo?.phase === "feedback") advanceSolo(solo);
     else if (solo) view.pick(SKIP);
     else mp?.skip();
+  });
+  $("hintBtn").addEventListener("click", () => {
+    if (solo?.phase === "question" && solo.shownAt !== null) takeHint(solo.tries, solo.game.questions[solo.turn]);
+    else if (!solo) mp?.hint();
   });
   $("quitBtn").addEventListener("click", onQuit);
   $("seedChip").addEventListener("click", async () => {

@@ -36,18 +36,20 @@ function distractors(answer, spread, need, rand) {
   return order.slice(0, need);
 }
 
-// { seed, difficulty, questions: [{ answer, options, colors }] }. answer is
-// an index into COUNTRIES; options are indices too, with the answer among
-// them, or null when the answer is typed. colors is true when the question
-// shows the flag's colours rather than the flag. No flag comes up twice in
-// a game.
+// { seed, difficulty, questions: [{ answer, options, colors, retries }] }.
+// answer is an index into COUNTRIES; options are indices too, with the
+// answer among them, or null when the answer is typed. colors is true when
+// the question shows the flag's colours rather than the flag, retries when
+// a wrong guess leaves it open. No flag comes up twice in a game.
 export function buildGame(seed) {
   const difficulty = difficultyById(seed.difficulty);
   const rand = randomSource(hashString(`flags|${seed.text}`));
   const answers = shuffled(regionPool(seed.region), rand).slice(0, seed.count);
 
   const questions = answers.map((answer) => {
-    if (!difficulty.choices) return { answer, options: null, colors: difficulty.colors === true };
+    if (!difficulty.choices) {
+      return { answer, options: null, colors: difficulty.colors === true, retries: difficulty.retries === true };
+    }
     const options = distractors(answer, difficulty.spread, difficulty.choices - 1, rand);
     options.splice(below(rand, difficulty.choices), 0, answer);
     return { answer, options };
@@ -146,6 +148,55 @@ export function matchAnswer(text) {
 export function isCorrect(question, pick) {
   if (question.options) return Number.isInteger(pick) && question.options[pick] === question.answer;
   return typeof pick === "string" && matchAnswer(pick) === question.answer;
+}
+
+/* ---- Expert's retries and hints ---- */
+
+// How a typed guess at a question that allows retries went: "right";
+// "wrong", naming another country; "again", a country already tried; or
+// "unknown", naming none. Only "wrong" costs anything. `tried` is the set
+// of countries guessed so far, and `named` the country this one names.
+export function judgeGuess(question, text, tried) {
+  const named = matchAnswer(text);
+  if (named === question.answer) return { verdict: "right", named };
+  if (named < 0) return { verdict: "unknown", named };
+  return { verdict: tried.has(named) ? "again" : "wrong", named };
+}
+
+// The few subregions that read better with "the".
+const WITH_THE = new Set(["Caribbean"]);
+
+// A name with only the letters `keep(i)` says to show, i being a letter's
+// place in its word; "Guinea-Bissau" and "d'Ivoire" are two words each.
+// Spaces between words stay wide, and anything not a letter shows.
+function masked(name, keep) {
+  return name
+    .split(" ")
+    .map((word) => {
+      let i = 0;
+      return Array.from(word)
+        .map((ch) => {
+          if (!/\p{L}/u.test(ch)) {
+            i = 0;
+            return ch;
+          }
+          return keep(i++) ? ch : "_";
+        })
+        .join(" ");
+    })
+    .join("   ");
+}
+
+// The first `n` hints for a question, up to HINT_MAX: where the country is,
+// the shape of its name, then every other letter.
+export function hintsFor(question, n) {
+  const c = COUNTRIES[question.answer];
+  const all = [
+    `It's in ${WITH_THE.has(c.subregion) ? "the " : ""}${c.subregion}.`,
+    masked(c.name, (i) => i === 0),
+    masked(c.name, (i) => i % 2 === 0),
+  ];
+  return all.slice(0, n);
 }
 
 export const flagUrl = (index) => `/flags/${COUNTRIES[index].code.toLowerCase()}.svg`;

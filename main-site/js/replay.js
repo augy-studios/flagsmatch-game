@@ -78,7 +78,7 @@ export class Replay {
           e.pick === NONE
             ? ["none", "minus", "not yours"]
             : t.correct
-              ? ["ok", "check", "right"]
+              ? ["ok", "check", e.misses || e.hints ? "right, with help" : "right"]
               : e.pick === SKIP
                 ? ["skip", "skip", "skipped"]
                 : e.pick === TIMEOUT
@@ -121,7 +121,7 @@ export class Replay {
       if (e.pick === NONE) {
         say = `${mode === "duel" ? "The other player took this one." : "Another player's flag."} It's ${countryName(q.answer)}.`;
       }
-      view.showResult(q, e.pick, { say });
+      view.showResult(q, e.pick, { say, help: e });
     } else {
       view.setFeedback(e.pick === NONE ? "" : "Thinking.");
     }

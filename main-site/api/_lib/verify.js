@@ -15,7 +15,7 @@ import { seedFromText } from "../../js/seed.js";
 import { buildGame } from "../../js/quiz.js";
 import { unpackLog, NONE, TIMEOUT, isAnswer, LOG_MAX_CHARS } from "../../js/log.js";
 import { scoreLog } from "../../js/score.js";
-import { CLOCK_SLACK_MS, MIN_ANSWER_MS, MIN_TYPED_MS, MS_PER_TYPED_CHAR, TURN_LIMIT_MS } from "../../js/rules.js";
+import { CLOCK_SLACK_MS, MIN_ANSWER_MS, MIN_MISS_MS, MIN_TYPED_MS, MS_PER_TYPED_CHAR, TURN_LIMIT_MS } from "../../js/rules.js";
 
 export function readLog(value) {
   if (typeof value !== "string" || !value || value.length > LOG_MAX_CHARS || !/^[A-Za-z0-9_-]+$/.test(value)) {
@@ -40,8 +40,11 @@ export function gameFor(row) {
   return buildGame(seed);
 }
 
-const minimumMs = (pick) =>
-  typeof pick === "string" ? MIN_TYPED_MS + Array.from(pick).length * MS_PER_TYPED_CHAR : MIN_ANSWER_MS;
+// Expert's wrong guesses before an entry had to be typed too, a skip's
+// included.
+const minimumMs = ({ pick, misses }) =>
+  misses * MIN_MISS_MS +
+  (typeof pick === "string" ? MIN_TYPED_MS + Array.from(pick).length * MS_PER_TYPED_CHAR : isAnswer(pick) ? MIN_ANSWER_MS : 0);
 
 // { entries, score, correct } for a log that holds up, or an HttpError 422.
 // elapsedMs is the server's time from the start ticket to now.
@@ -64,7 +67,7 @@ export function checkLog(row, packed, elapsedMs) {
     }
     if (pick === TIMEOUT && row.mode === "solo") throw implausible(row, `flag ${i}: a time limit in a solo game`);
 
-    if (isAnswer(pick) && ms < minimumMs(pick)) throw implausible(row, `flag ${i}: answered in ${ms} ms`);
+    if (ms < minimumMs(entries[i])) throw implausible(row, `flag ${i}: answered in ${ms} ms`);
     if (row.mode !== "solo" && ms > TURN_LIMIT_MS) throw implausible(row, `flag ${i}: ${ms} ms past the flag's time`);
   }
   if (spent > elapsedMs + CLOCK_SLACK_MS) throw implausible(row, `${spent} ms answering in ${elapsedMs} ms`);
